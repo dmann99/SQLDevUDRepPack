@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<folder>
+	<name><![CDATA[SQLDevUDRepPack v0.1.1]]></name>
+	<tooltip><![CDATA[]]></tooltip>
+	<description><![CDATA[ba6.us - SQL Developer Custom Report Library v0.1.1]]></description>
+		<folder>
+		<name><![CDATA[Exadata]]></name>
+		<tooltip><![CDATA[Exadata]]></tooltip>
+		<description><![CDATA[ ]]></description>
+		</folder>
+	<folder>
+		<name><![CDATA[SQL Monitoring]]></name>
+		<tooltip><![CDATA[SQL Monitoring]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="ab936d1c-0132-1000-8001-0a01574dc128" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[test]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[DECLARE
+  MY_SQL_ID VARCHAR2(30);
+BEGIN
+  MY_SQL_ID := :SQL_ID;
+
+select DBMS_SQLTUNE.REPORT_SQL_MONITOR(  
+    session_id=>sys_context('userenv','sid'),  
+    report_level=>'ALL') as report  
+ from dual; 
+
+
+
+END;]]></sql>
+				<binds>
+					<bind id="SQL_ID">
+						<prompt><![CDATA[SQL_ID]]></prompt>
+						<value><![CDATA[123456]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="b56f5a02-0132-1000-8001-0a01574db61a" type="" style="Table" enable="true">
+			<name><![CDATA[SQL Monitoring - Main (Summary)]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Status, Duration, SQL_ID, User, Parallel, Database Time, IO Requests, Start, Ended, SQL Text
+-- http://download.oracle.com/docs/cd/B28359_01/server.111/b28320/dynviews_3048.htm
+SELECT Status, 
+       TO_CHAR(SQL_EXEC_START,'HH24:MI') as STARTTime,
+       CASE 
+         WHEN Status<>'EXECUTING' THEN TO_CHAR(SQL_EXEC_START + (ELAPSED_TIME/1000000/24/60/60),'HH24:MI') 
+         WHEN Status IS NULL THEN NULL
+       END as SQL_EXEC_END,
+       ROUND(ELAPSED_TIME/1000000)||'s' as Duration, 
+       (SELECT USERNAME FROM V$SESSION WHERE v$SESSION.SID=mon.SID) AS USERNAME,
+       SID,
+       SQL_ID,
+       SQL_PLAN_HASH_VALUE as PlanHashVal,
+       -- Sorry, this distinct is ugly but gets the job done
+       (SELECT DISTINCT SQL_TEXT FROM V$SQL WHERE V$SQL.SQL_ID=MON.SQL_ID) AS SQL_TEXT, 
+       KEY
+FROM v$sql_monitor mon
+ORDER BY SUBSTR(STATUS,1,4) DESC, 
+         SQL_EXEC_START DESC;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="b5b02239-0132-1000-8004-0a01574db61a" toolbar="false" ><title>Detail</title></item>		</display>
+		<display id="b5b02239-0132-1000-8004-0a01574db61a" type="" style="Table" enable="true">
+			<name><![CDATA[SQL Monitoring - Child (Detail)]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select * From v$sql_plan_monitor 
+where key = :key]]></sql>
+				<binds>
+					<bind id="key">
+						<prompt><![CDATA[key]]></prompt>
+						<value><![CDATA[601295435902]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="b5fc6c70-0132-1000-800b-0a01574db61a" type="" style="Table" enable="true">
+			<name><![CDATA[Test-Monitor-Graph (Work In Progress)]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[WITH DataQuery as (select
+key,
+ROUND(ELAPSED_TIME/1000000,2) as ELAPSED_TIME,
+ROUND(USER_IO_WAIT_TIME/1000000,2) as IO_TIME,
+ROUND((APPLICATION_WAIT_TIME+CONCURRENCY_WAIT_TIME+CLUSTER_WAIT_TIME+PLSQL_EXEC_TIME+JAVA_EXEC_TIME)/1000000,2) as OTHER_TIME,
+ROUND(CPU_TIME/1000000,2) as CPU_TIME
+from v$sql_monitor
+where status <> 'EXECUTING')
+SELECT DATAQUERY.*, 
+       'SQLDEV:GAUGE:0:'||(IO_TIME+OTHER_TIME+CPU_TIME)*100||
+       ':'||IO_TIME*100||':'||(IO_TIME+OTHER_TIME)*100||':0' as "RedIO|YellowOther|GreenCPU"
+FROM DataQuery]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="7927e770-0138-1000-802f-0a01571c53e9" type="" style="Script" enable="true">
+			<name><![CDATA[DBMS_SQLTUNE.report_sql_monitor as text (Work in Progress)]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SET LONG 1000000
+SET LONGCHUNKSIZE 1000000
+SET LINESIZE 1000
+SET PAGESIZE 0
+SET TRIM ON
+SET TRIMSPOOL ON
+SET ECHO OFF
+SET FEEDBACK OFF
+
+SELECT DBMS_SQLTUNE.report_sql_monitor(
+  sql_id       => :sqlid,
+  type         => 'TEXT',
+  report_level => 'ALL') AS report
+FROM dual;]]></sql>
+				<binds>
+					<bind id="sqlid">
+						<prompt><![CDATA[sqlid]]></prompt>
+						<tooltip><![CDATA[sqlid]]></tooltip>
+						<value><![CDATA[123]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[!]]></name>
+		<tooltip><![CDATA[!]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="ff25d6ff-0131-1000-8012-0a01574d3542" type="" style="Table" enable="true">
+			<name><![CDATA[Blocking Locks]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select s1.username || '@' || s1.machine 
+  || ' ( SID=' || s1.sid || ' )  is blocking '
+  || s2.username || '@' || s2.machine || ' ( SID=' || s2.sid || ' ) ' AS blocking_status 
+  from v$lock l1, v$session s1, v$lock l2, v$session s2 
+  where s1.sid=l1.sid and s2.sid=l2.sid 
+  and l1.BLOCK=1 and l2.request > 0 
+  and l1.id1 = l2.id1 
+  and l2.id2 = l2.id2]]></sql>
+			</query>
+		</display>
+		<display id="ff26738b-0131-1000-8013-0a01574d3542" type="" style="Table" enable="true">
+			<name><![CDATA[In Flight SQL]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- In Flight SQL (SQL as CLOB) 
+SELECT nvl(ses.username,'ORACLE PROC')||' ('||ses.sid||')' UNAM,  
+       machine, 
+      ltrim(to_char(floor(SES.LAST_CALL_ET/3600), '09')) || ':'
+       || ltrim(to_char(floor(mod(SES.LAST_CALL_ET, 3600)/60), '09')) || ':'
+       || ltrim(to_char(mod(SES.LAST_CALL_ET, 60), '09'))    RUNT, 
+       SQL_FULLTEXT STMT, 
+       'ALTER SYSTEM KILL SESSION ''' || SID || ',' || SERIAL# || ''';' as killstmt, 
+      ses.sql_id 
+  FROM V$SESSION SES,   
+       V$SQL SQL 
+ where SES.STATUS = 'ACTIVE'
+   and SES.USERNAME is not null
+   and SES.SQL_ADDRESS    = SQL.ADDRESS 
+   and SES.SQL_HASH_VALUE = SQL.HASH_VALUE 
+   and Ses.AUDSID <> userenv('SESSIONID') 
+ order by runt desc;]]></sql>
+			</query>
+		</display>
+		<display id="ff277597-0131-1000-8014-0a01574d3542" type="" style="Table" enable="true">
+			<name><![CDATA[Long Operations - Text]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT ROUND(sofar/totalwork*100,2), v$session_longops.* 
+  FROM v$session_longops 
+ WHERE sofar <> totalwork 
+ ORDER BY target, sid]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="790777cd-0138-1000-8010-0a01571c53e9" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[Long Operations - HTML]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- David Mann
+-- http://ba6.us
+-- dmann99@gmail.com
+--
+-- Long Operations Graph with HTML Output
+-- 01/29/2009
+
+DECLARE
+  NumOperations NUMBER :=0;
+BEGIN
+  
+  DBMS_OUTPUT.PUT_LINE('<FONT SIZE=3 FACE="Courier">');
+
+  FOR c1 IN (SELECT MESSAGE, ROUND(sofar/totalwork*100,0) as pct
+               FROM v$session_longops
+         WHERE sofar <> totalwork
+      ORDER BY target, sid) 
+  LOOP
+        
+    DBMS_OUTPUT.PUT_LINE('<TABLE BORDER="1" BGCOLOR="#EEEEEE" WIDTH="100%">');
+    DBMS_OUTPUT.PUT_LINE('<TR>');
+    DBMS_OUTPUT.PUT_LINE('<TD>Operation:</TD>');
+    DBMS_OUTPUT.PUT_LINE('<TD>'||c1.MESSAGE || '</TD>');
+    DBMS_OUTPUT.PUT_LINE('</TR>');
+    DBMS_OUTPUT.PUT_LINE('<TR>');
+    DBMS_OUTPUT.PUT_LINE('<TD>Progress:</TD>');
+    
+    DBMS_OUTPUT.PUT_LINE('  <TABLE BORDER="1" BGCOLOR="RED" WIDTH="'||c1.pct||'%">');
+    DBMS_OUTPUT.PUT_LINE('  <TR><TD>'||c1.pct||'%</TD></TR>');
+    DBMS_OUTPUT.PUT_LINE('  </TABLE>');
+
+    DBMS_OUTPUT.PUT_LINE('</TD></TR></TABLE>');
+
+    DBMS_OUTPUT.PUT_LINE('<BR>');
+    NumOperations := NumOperations + 1;
+  END LOOP;
+
+  IF NumOperations = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('No Long Operations Active');
+  END IF;
+
+  DBMS_OUTPUT.PUT_LINE('</FONT>');
+
+
+END;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Auditing]]></name>
+		<tooltip><![CDATA[Auditing]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="78f4f2d6-0138-1000-8007-0a01571c53e9" type="" style="Table" enable="true">
+			<name><![CDATA[Invalid Username/Password]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT TO_CHAR(TIMESTAMP,'YYYY-MM-DD HH24:MI') as Time, 
+       USERNAME, 
+       OS_USERNAME,
+       USERHOST
+  FROM DBA_AUDIT_TRAIL
+ WHERE USERNAME=UPPER(:username_like_expr) 
+   AND RETURNCODE=1017 
+ ORDER BY TIMESTAMP DESC]]></sql>
+				<binds>
+					<bind id="username_like_expr">
+						<prompt><![CDATA[username_like_expr]]></prompt>
+						<tooltip><![CDATA[username_like_expr]]></tooltip>
+						<value><![CDATA[%APEX%]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[AWR]]></name>
+		<tooltip><![CDATA[AWR]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="f819bd03-0131-1000-8001-0a01574d04b4" type="" style="Table" enable="true">
+			<name><![CDATA[AWR - Performance Detail by Hour for 1 SQL_ID]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select TO_CHAR(begin_interval_time,'MM/DD/YYYY HH24:MI') || ' - ' ||  
+       TO_CHAR(end_interval_time,'HH24:MI') as INTERVAL,  
+       sql_id,  
+       plan_hash_value as "PlanHashValue",  
+       ROUND(elapsed_time_total/1000000,2) as "ElapsedTotal", 
+       executions_total as "ExecsTotal",  
+       ROUND((elapsed_time_total/1000000)/executions_total,2) as "ElapsedPerExec" 
+from dba_hist_sqlstat join dba_hist_snapshot on dba_hist_sqlstat.snap_id=dba_hist_snapshot.snap_id  
+where sql_id IN (TRIM(:sql_id)) and executions_total > 0
+ORDER BY DBA_HIST_SNAPSHOT.end_interval_time ASC]]></sql>
+				<binds>
+					<bind id="sql_id">
+						<prompt><![CDATA[sql_id]]></prompt>
+						<value><![CDATA[79zr8bdf9kc33]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						null																								</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="fed1851b-0131-1000-8004-0a01574d3542" type="" style="Table" enable="true">
+			<name><![CDATA[AWR - Performance Summary By Day for 1 SQL_ID]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select TO_CHAR(TRUNC(end_interval_time),'MM/DD/YYYY HH24:MI') as Day,  
+       sql_id,  
+       COUNT(DISTINCT PLAN_HASH_VALUE) as "PlanCnt",
+       ROUND(SUM(elapsed_time_total/1000000),2) as "Total Elapsed",
+       sum(executions_total) as "TotalExecs",
+       ROUND(SUM(elapsed_time_total/1000000)/SUM(executions_total),2) as "AvgTimePerExec",
+       ROUND(MIN(elapsed_time_total/1000000/executions_total),2) as "MinHourlyAvgElapsed",
+       ROUND(MAX(elapsed_time_total/1000000/executions_total),2) as "MaxHourlyAvgElapsed"
+from dba_hist_sqlstat join dba_hist_snapshot on dba_hist_sqlstat.snap_id=dba_hist_snapshot.snap_id  
+where sql_id IN (:sql_id) and executions_total > 0
+GROUP BY TRUNC(end_interval_time), sql_id
+ORDER BY 1 DESC]]></sql>
+				<binds>
+					<bind id="sql_id">
+						<prompt><![CDATA[sql_id]]></prompt>
+						<value><![CDATA[79zr8bdf9kc33]]></value>
+					</bind>
+				</binds>
+			</query>
+		</display>
+		<display id="2b6f8ef8-0132-1000-8004-0a01574d2c0a" type="" style="Table" enable="true">
+			<name><![CDATA[AWR - Longest Running SQL - Last 24 Hours]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT "SQL_ID", "EXECUTIONS_TOTAL", "TOTAL_SECONDS", "ELAP_PER_EXEC", "SQL_TEXT" FROM(
+select sql.sql_id, 
+       ROUND(elapsed_time_total/1000000/executions_total,2) as elap_per_exec,
+       executions_total, 
+       round(elapsed_time_total/1000000,2) as total_seconds, 
+       sql_text
+  From dba_hist_snapshot snap join dba_hist_sqlstat sql 
+    on snap.snap_id=sql.snap_id
+    join dba_hist_sqltext ON
+      sql.sql_id=dba_hist_sqltext.sql_id
+WHERE END_INTERVAL_TIME > (SYSDATE-(25/24))
+  AND executions_total > 0
+  ORDER BY 2 DESC
+)]]></sql>
+			</query>
+		</display>
+		<display id="578109ab-0138-1000-8001-0a01571cc207" type="" style="Table" enable="true">
+			<name><![CDATA[AWR Reports By Snap - Main]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Child report:
+-- http://www.thatjeffsmith.com/archive/2012/01/sweet-child-report-o-mine/
+SELECT SNAP_ID, 
+       INSTANCE_NUMBER, 
+       TO_CHAR(BEGIN_INTERVAL_TIME,'YYYY-MM-DD HH24:MI') as BEGIN_TIME, 
+       EXTRACT( HOUR FROM (END_INTERVAL_TIME-BEGIN_INTERVAL_TIME))*60+
+       EXTRACT( MINUTE FROM (END_INTERVAL_TIME-BEGIN_INTERVAL_TIME)) AS MINUTES,
+       DBID
+FROM dba_hist_snapshot ORDER BY 
+SNAP_ID DESC, INSTANCE_NUMBER ASC;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+						null																														</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="792de96c-0138-1000-803a-0a01571c53e9" toolbar="false" ><title>Generate AWR as Text</title></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="7936a819-0138-1000-804e-0a01571c53e9" toolbar="false" ><title>Generate AWR as HTML</title></item>		</display>
+		<display id="792de96c-0138-1000-803a-0a01571c53e9" type="" style="Script" enable="true">
+			<name><![CDATA[AWR Reports By Snap - Detail as Text]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT 
+   output  
+FROM    
+   TABLE
+   (dbms_workload_repository.awr_report_text 
+      (:DBID,:INSTANCE_NUMBER,:SNAP_ID,:SNAP_ID+1 )
+   )]]></sql>
+				<binds>
+					<bind id="DBID">
+						<prompt><![CDATA[DBID]]></prompt>
+						<tooltip><![CDATA[DBID]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+					</bind>
+					<bind id="INSTANCE_NUMBER">
+						<prompt><![CDATA[INSTANCE_NUMBER]]></prompt>
+						<tooltip><![CDATA[INSTANCE_NUMBER]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+					</bind>
+					<bind id="SNAP_ID">
+						<prompt><![CDATA[SNAP_ID]]></prompt>
+						<tooltip><![CDATA[SNAP_ID]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="7936a819-0138-1000-804e-0a01571c53e9" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[AWR Reports By Snap - Detail as HTML]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT 
+   output  
+FROM    
+   TABLE
+   (dbms_workload_repository.awr_report_html 
+      (:DBID,:INSTANCE_NUMBER,:SNAP_ID,:SNAP_ID+1 )
+   )]]></sql>
+				<binds>
+					<bind id="DBID">
+						<prompt><![CDATA[DBID]]></prompt>
+						<tooltip><![CDATA[DBID]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+					</bind>
+					<bind id="INSTANCE_NUMBER">
+						<prompt><![CDATA[INSTANCE_NUMBER]]></prompt>
+						<tooltip><![CDATA[INSTANCE_NUMBER]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+					</bind>
+					<bind id="SNAP_ID">
+						<prompt><![CDATA[SNAP_ID]]></prompt>
+						<tooltip><![CDATA[SNAP_ID]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+				null										</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Statistics]]></name>
+		<tooltip><![CDATA[Statistics]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="cae3fe30-0132-1000-8002-0a01574d6861" type="" style="Table" enable="true">
+			<name><![CDATA[Historical Rowcounts from Stats History]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Historical RowCounts From Stats History
+WITH TableList AS
+  (SELECT object_id, 
+          OWNER,
+          object_name
+     FROM dba_objects
+    WHERE object_type='TABLE'
+      AND object_name  = UPPER(:TNAME)  ) ,
+  HistTableInfo AS
+  (SELECT TableList.OWNER,
+          OBJECT_NAME                         AS TABLE_NAME,
+          TO_CHAR(ANALYZETIME,'YYYY-MM-DD HH24:MI') AS AnalyzeTime,
+          OTH.ROWCNT
+     FROM SYS.WRI$_OPTSTAT_TAB_HISTORY OTH,
+          TableList
+    WHERE OTH.OBJ# = TableList.OBJECT_ID  ),
+  CurrTableInfo AS
+  (SELECT TableList.OWNER, 
+          TABLE_NAME,
+          TO_CHAR(LAST_ANALYZED,'YYYY-MM-DD HH24:MI') AS AnalyzeTime,
+          num_rows                                    AS ROWCNT
+     FROM DBA_TABLES,
+          TableList
+    WHERE DBA_TABLES.TABLE_NAME = TableList.object_name
+      AND DBA_TABLES.OWNER = TableList.owner)
+SELECT * FROM HistTableInfo
+UNION
+SELECT * FROM CurrTableInfo 
+ORDER BY 1,2,3;]]></sql>
+				<binds>
+					<bind id="TNAME">
+						<prompt><![CDATA[TNAME]]></prompt>
+						<tooltip><![CDATA[TNAME]]></tooltip>
+						<value><![CDATA[S_EVT_ACT]]></value>
+					</bind>
+				</binds>
+			</query>
+		</display>
+		<display id="ccc8e146-0132-1000-8001-0a01574d6bfd" type="" style="Table" enable="true">
+			<name><![CDATA[Stale Statistics]]></name>
+			<description><![CDATA[Tables with More Than 5% Change]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT ATM.TABLE_OWNER,
+  ATM.TABLE_NAME,
+  ATM.PARTITION_NAME,
+  AT.NUM_ROWS AS Analyzed_Num_Rows,
+  ATM.INSERTS,
+  ATM.UPDATES,
+  ATM.DELETES,
+  (ATM.INSERTS       +ATM.UPDATES+ATM.DELETES)                  AS Changes,
+  ROUND(((ATM.INSERTS+ATM.UPDATES+ATM.DELETES)/NUM_ROWS)*100,2) AS pct,
+  (SELECT LAST_ANALYZED
+  FROM DBA_TABLES
+  WHERE OWNER   =ATM.TABLE_OWNER
+  AND TABLE_NAME=ATM.TABLE_NAME
+  ) AS LAST_ANALYZED
+FROM ALL_TAB_MODIFICATIONS ATM,
+  ALL_TABLES AT
+WHERE ATM.TABLE_OWNER=AT.OWNER
+AND ATM.TABLE_NAME   =AT.TABLE_NAME
+AND ATM.TABLE_NAME NOT LIKE 'BIN$%'
+AND ATM.TABLE_OWNER NOT IN ('SYS')
+AND NUM_ROWS            <> 0
+AND ROUND(((ATM.INSERTS+ATM.UPDATES+ATM.DELETES)/NUM_ROWS)*100,2)> 5
+ORDER BY 9 DESC]]></sql>
+			</query>
+		</display>
+		<display id="ccc9e9e9-0132-1000-8002-0a01574d6bfd" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[Stats Survey (Work in Progress)]]></name>
+			<description><![CDATA[Want to add info about any tables that have custom stats parameters that differ from the global defaults. ]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[DECLARE
+  DBNAME V$DATABASE.NAME%TYPE;
+BEGIN
+
+  SELECT NAME INTO DBNAME FROM V$DATABASE;
+  DBMS_OUTPUT.PUT_LINE('<h1>Database Info</h1>');
+  DBMS_OUTPUT.PUT_LINE('<P>Database: '||DBNAME||'</p>');
+  DBMS_OUTPUT.PUT_LINE('Time:'||TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI'));
+
+  DBMS_OUTPUT.PUT_LINE('<h1>Global Stats Preferences</h1>');
+  DBMS_OUTPUT.PUT_LINE('<p>Cascade: '||DBMS_STATS.GET_PREFS('CASCADE')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Degree: '||DBMS_STATS.GET_PREFS('DEGREE')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Estimate %: '||DBMS_STATS.GET_PREFS('ESTIMATE_PERCENT')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Method Opt: '||DBMS_STATS.GET_PREFS('METHOD_OPT')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>No Invalidate: '||DBMS_STATS.GET_PREFS('NO_INVALIDATE')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Granularity: '||DBMS_STATS.GET_PREFS('GRANULARITY')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Incremental: '||DBMS_STATS.GET_PREFS('INCREMENTAL')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Publis: '||DBMS_STATS.GET_PREFS('PUBLISH')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Stale %: '||DBMS_STATS.GET_PREFS('STALE_PERCENT')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('<p>Incremental: '||DBMS_STATS.GET_PREFS('INCREMENTAL')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('Incremental: '||DBMS_STATS.GET_PREFS('INCREMENTAL')||'</p>');
+  DBMS_OUTPUT.PUT_LINE('Incremental: '||DBMS_STATS.GET_PREFS('INCREMENTAL')||'</p>');
+  
+  
+  
+  
+  -- Stats Job History
+--10g
+--SELECT job_name, state
+--FROM dba_scheduler_jobs
+--WHERE job_name='GATHER_STATS_JOB';
+
+-- 11g
+--select client_name, JOB_SCHEDULER_STATUS from DBA_AUTOTASK_CLIENT_JOB
+--where client_name='auto optimizer stats collection';
+
+--SELECT client_name, window_name, window_start_time, jobs_created, jobs_started, jobs_completed
+--FROM dba_autotask_client_history
+--WHERE client_name like '%stats%'
+--ORDER BY WINDOW_START_TIME DESC;
+
+-- Freshness Check
+--SELECT ATM.TABLE_OWNER,         ATM.TABLE_NAME,         ATM.PARTITION_NAME,        AT.NUM_ROWS as Analyzed_Num_Rows,         ATM.INSERTS,         ATM.UPDATES,         ATM.DELETES,        (ATM.INSERTS+ATM.UPDATES+ATM.DELETES) as Changes,        ROUND(((ATM.INSERTS+ATM.UPDATES+ATM.DELETES)/NUM_ROWS)*100,2) as pct,        (SELECT LAST_ANALYZED FROM DBA_TABLES WHERE OWNER=ATM.TABLE_OWNER and TABLE_NAME=ATM.TABLE_NAME) as LAST_ANALYZED   FROM ALL_TAB_MODIFICATIONS ATM,         ALL_TABLES ATWHERE ATM.TABLE_OWNER=AT.OWNER    AND ATM.TABLE_NAME=AT.TABLE_NAME    AND ATM.TABLE_NAME NOT LIKE 'BIN$%'   AND ATM.TABLE_OWNER NOT IN ('SYS')    AND NUM_ROWS <> 0  ORDER BY 9 DESC; 
+
+
+-- Rowcounts - most changed
+
+END;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Storage]]></name>
+		<tooltip><![CDATA[Storage]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="29bf100c-0138-1000-8001-0a01571c87fd" type="" style="Table" enable="true">
+			<name><![CDATA[Segments By Size]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT owner, segment_name, segment_type, partition_name, ROUND(bytes/1024/1024/1024,3) as GB
+FROM dba_segments 
+ORDER BY bytes desc]]></sql>
+			</query>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Instance]]></name>
+		<tooltip><![CDATA[Instance]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="38d24a55-0138-1000-8003-0a01571ce2ee" type="" style="Table" enable="true">
+			<name><![CDATA[Redo Log - Daily Summary]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Redo Log Daily Summary
+SELECT TRUNC(COMPLETION_TIME,'DD') DAY,
+  thread#,
+  ROUND(SUM(BLOCKS*BLOCK_SIZE)/1048576) MB,
+  COUNT(          *) Archives_Generated
+FROM v$archived_log
+GROUP BY TRUNC(COMPLETION_TIME,'DD'),
+  thread#
+ORDER BY 1;]]></sql>
+			</query>
+		</display>
+		<display id="38d2ad93-0138-1000-8004-0a01571ce2ee" type="" style="Table" enable="true">
+			<name><![CDATA[Redo Log - Hourly Summary]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Redo Log Hourly Summary
+SELECT TO_DATE(TRUNC(COMPLETION_TIME,'HH'),'DD-MON-YYYY HH24:MI') Hour,
+  THREAD# ,
+  ROUND(SUM(BLOCKS*BLOCK_SIZE)/(1024*1024)) TOTAL_FILE_MB,
+  COUNT(*) NUM_LOGS
+FROM v$archived_log
+GROUP BY TRUNC(COMPLETION_TIME,'HH'),
+  THREAD#
+ORDER BY 1 DESC ;]]></sql>
+			</query>
+		</display>
+		<display id="38d33820-0138-1000-8005-0a01571ce2ee" type="" style="Table" enable="true">
+			<name><![CDATA[Redo Log - Configuration]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select * 
+from v$log]]></sql>
+			</query>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[DataPump]]></name>
+		<tooltip><![CDATA[Info about Active DataPump Jobs]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="39c61e2e-0138-1000-8001-0a01571c1b00" type="" style="Table" enable="true">
+			<name><![CDATA[Running Jobs]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT * 
+FROM DBA_DATAPUMP_JOBS]]></sql>
+			</query>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Memory]]></name>
+		<tooltip><![CDATA[Memory]]></tooltip>
+		<description><![CDATA[ ]]></description>
+			<display id="6d3404ae-0138-1000-8003-0a01571c9ca9" type="" style="Chart" enable="true">
+			<name><![CDATA[Memory Resize Operation History (Experimental)]]></name>
+			<description><![CDATA[Need to find a way to smooth out the staggered times that pool resizes happen in order to make things 'nice' on this graph. ]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<LEGEND>true</LEGEND>
+				<STYLE>Default</STYLE>
+				<THREED>true</THREED>
+				<GRID>true</GRID>
+				<GRADIENT>true</GRADIENT>
+				<TYPE>BAR_VERT_STACK</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
+FROM DBA_HIST_MEMORY_RESIZE_OPS 
+ORDER BY UPPER(COMPONENT), END_TIME]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						null																								</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="6d3ddb8f-0138-1000-8009-0a01571c9ca9" type="" style="Chart" enable="true">
+			<name><![CDATA[PGA Memory Resize Operation History]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<STYLE>Default</STYLE>
+				<LEGEND>true</LEGEND>
+				<THREED>true</THREED>
+				<GRADIENT>true</GRADIENT>
+				<GRID>true</GRID>
+				<TYPE>BAR_VERT_STACK</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
+FROM DBA_HIST_MEMORY_RESIZE_OPS 
+WHERE COMPONENT IN ('PGA Target')
+ORDER BY END_TIME, COMPONENT]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+				null																												</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="716dedf3-0138-1000-8016-0a01571c9ca9" type="" style="Chart" enable="true">
+			<name><![CDATA[SGA  Memory Resize Operation History]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<STYLE>Default</STYLE>
+				<LEGEND>true</LEGEND>
+				<THREED>true</THREED>
+				<GRADIENT>true</GRADIENT>
+				<GRID>true</GRID>
+				<TYPE>BAR_VERT_STACK</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
+FROM DBA_HIST_MEMORY_RESIZE_OPS 
+WHERE COMPONENT IN ('SGA Target')
+ORDER BY END_TIME, COMPONENT]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+				
+				null																																</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="737aba08-0138-1000-8001-0a01571c24c3" type="" style="Chart" enable="true">
+			<name><![CDATA[Default Buffer Pool Memory Resize Operation History]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<STYLE>Default</STYLE>
+				<LEGEND>true</LEGEND>
+				<THREED>true</THREED>
+				<GRADIENT>true</GRADIENT>
+				<GRID>true</GRID>
+				<TYPE>BAR_VERT_STACK</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
+FROM DBA_HIST_MEMORY_RESIZE_OPS 
+WHERE COMPONENT IN ('DEFAULT buffer cache')
+ORDER BY END_TIME, COMPONENT]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="" author="" subject="" keywords="" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Times New Roman" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Times New Roman" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+				
+						
+						
+				null																																</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+</folder>
+</displays>
