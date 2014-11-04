@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<displays>
+<folder>
+	<name><![CDATA[Examples]]></name>
+	<tooltip><![CDATA[Examples]]></tooltip>
+	<description><![CDATA[ ]]></description>
+		<display id="59c90032-0149-1000-8001-c0a858eeb059" type="" style="plsql-dbms_output" enable="true" requiredLic="diagnostics">
+		<name><![CDATA[ASH Report For The Past 30 Minutes]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<query>
+			<sql><![CDATA[declare
+dbid number;
+instance_id number;
+begin
+select dbid into dbid from gv$database;
+select instance_number into instance_id from v$instance;
+dbms_output.enable(500000);
+dbms_output.put_line('<PRE>');
+for rc in ( select output from 
+   table(dbms_workload_repository.ash_report_text( dbid,instance_id,SYSDATE-31/1440, SYSDATE-1/1440))) loop
+   dbms_output.put_line(rc.output);
+end loop;
+dbms_output.put_line('</PRE>') ;
+end;]]></sql>
+		</query>
+	</display>
+	<display id="59cbed38-0149-1000-8003-c0a858eeb059" type="" style="plsql-dbms_output" enable="true" requiredLic="diagnostics">
+		<name><![CDATA[Last AWR Report]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[]]></drillclass>
+		<CustomValues>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[declare
+dbid number;
+instance_id number;
+start_id number;
+end_id number;
+begin
+dbms_output.enable(1000000);
+select max(snap_id)-1,max(snap_id) into start_id,end_id from dba_hist_snapshot;
+select dbid into dbid from gv$database;
+select instance_number into instance_id from v$instance;
+
+dbms_output.put_line('<PRE>');
+for rc in ( select output from 
+   table(dbms_workload_repository.awr_report_text(dbid,instance_id,start_id,end_id)) 
+           ) loop
+  -- dbms_output.put_line('<BR>');
+   dbms_output.put_line(rc.output);
+end loop;
+dbms_output.put_line('</PRE>');
+end;]]></sql>
+		</query>
+	</display>
+	<display id="6ee58f91-0149-1000-8013-c0a858eecf7c" type="" style="Table" enable="true">
+		<name><![CDATA[Simple UDR]]></name>
+		<description><![CDATA[]]></description>
+		<tooltip><![CDATA[]]></tooltip>
+		<drillclass><![CDATA[null]]></drillclass>
+		<CustomValues>
+			<TYPE>horizontal</TYPE>
+		</CustomValues>
+		<query>
+			<sql><![CDATA[SELECT * FROM EMP]]></sql>
+		</query>
+			<pdf version="VERSION_1_7" compression="CONTENT">
+				<docproperty title="null" author="null" subject="null" keywords="null" />
+				<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+				<column>
+					<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+					<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+					<blob blob="NONE" zip="false" />
+				</column>
+				<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+				<header enable="false" generatedate="false">
+					<data>
+					null					</data>
+				</header>
+				<footer enable="false" generatedate="false">
+					<data value="null" />
+				</footer>
+				<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+					<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+				</security>
+				<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+			</pdf>
+	</display>
+	<folder>
+		<name><![CDATA[HTML - External Render]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="670c0699-0149-1000-8007-c0a858ee5997" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[SQLDev4 + d3JS Example]]></name>
+			<description><![CDATA[select (SELECT ENAME FROM EMP WHERE EMPNO=E.MGR) AS MGR_ENAME, ENAME From EMP E WHERE MGR IS NOT NULL]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[BEGIN
+
+DBMS_OUTPUT.PUT_LINE('<HTML>');
+DBMS_OUTPUT.PUT_LINE('<HEAD>');
+DBMS_OUTPUT.PUT_LINE('<link rel="stylesheet" type="text/css" href="http://ba6.us/CodeExamples/SQLD-d3js-1/mynodecode.css">');
+DBMS_OUTPUT.PUT_LINE('</HEAD>');
+DBMS_OUTPUT.PUT_LINE('<BODY>');
+DBMS_OUTPUT.PUT_LINE('');
+DBMS_OUTPUT.PUT_LINE('<script type="text/javascript">');
+DBMS_OUTPUT.PUT_LINE('var links = [');
+
+
+FOR cur IN (select (SELECT ENAME FROM EMP WHERE EMPNO=E.MGR) AS MGR_ENAME, ENAME From EMP E WHERE MGR IS NOT NULL)
+LOOP
+DBMS_OUTPUT.PUT_LINE('  {source: "'||cur.MGR_ENAME||'", target: "'||cur.ENAME||'"},');
+
+END LOOP;
+
+DBMS_OUTPUT.PUT_LINE('];');
+DBMS_OUTPUT.PUT_LINE('</script>');
+DBMS_OUTPUT.PUT_LINE('');
+DBMS_OUTPUT.PUT_LINE('');
+DBMS_OUTPUT.PUT_LINE('<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>');
+DBMS_OUTPUT.PUT_LINE('<script type="text/javascript" src="http://ba6.us/CodeExamples/SQLD-d3js-1/mynodecode.js"></script>');
+DBMS_OUTPUT.PUT_LINE('');
+DBMS_OUTPUT.PUT_LINE('</BODY>');
+DBMS_OUTPUT.PUT_LINE('');
+DBMS_OUTPUT.PUT_LINE('</HTML>');
+DBMS_OUTPUT.PUT_LINE('');
+
+END;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					null											</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Binds]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="9ecdc141-0148-1000-8019-0a1a52788fb4" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[Bind Test - PL/SQL DBMS Output]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[BEGIN
+DBMS_OUTPUT.PUT_LINE(:bind1);
+--DBMS_OUTPUT.PUT_LINE('Hello world! '||:bind1);
+END;]]></sql>
+				<binds>
+					<bind id="bind1">
+						<prompt><![CDATA[Please Enter Val for Bind1:]]></prompt>
+						<tooltip><![CDATA[bind1]]></tooltip>
+						<value><![CDATA[test]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+						
+				
+				
+				
+				
+				
+				null																																																						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="6e8a998f-0149-1000-8004-c0a858eecf7c" type="" style="Table" enable="true">
+			<name><![CDATA[Bind Test - Simple]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT * 
+  FROM EMP 
+ WHERE SAL < :SAL_LIMIT]]></sql>
+				<binds>
+					<bind id="SAL_LIMIT">
+						<prompt><![CDATA[SAL_LIMIT]]></prompt>
+						<tooltip><![CDATA[SAL_LIMIT]]></tooltip>
+						<value><![CDATA[2500]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[ParentChild]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="5e2de3a7-0149-1000-8011-c0a858eeb059" type="" style="Chart" enable="true">
+			<name><![CDATA[ParentChild - Graph + SQL]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<LEGEND>false</LEGEND>
+				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
+				<DATA_MAP_SERIES>\</DATA_MAP_SERIES>
+				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
+				<THREED>false</THREED>
+				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
+				<GRID>false</GRID>
+				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
+				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
+				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
+				<GRID_WIDTH>THICKER</GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
+				<TYPE>BAR_VERT_STACK</TYPE>
+				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
+				<DATA_MAP_VALUES>\</DATA_MAP_VALUES>
+				<DATA_MAP_COUNT>0</DATA_MAP_COUNT>
+				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
+				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
+				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
+				<STYLE>Regatta</STYLE>
+				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
+				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
+				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
+				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
+				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
+				<DATA_MAP_COLUMNS>\</DATA_MAP_COLUMNS>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT DNAME, DNAME, COUNT(*)
+--DEPT.DEPTNO 
+FROM DEPT JOIN EMP ON DEPT.DEPTNO=EMP.DEPTNO 
+GROUP BY DNAME]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					
+					
+					
+					
+				null																														</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+			<display id="" type="" style="Table" enable="true">
+				<name><![CDATA[EmpDeptDetail]]></name>
+				<description><![CDATA[]]></description>
+				<tooltip><![CDATA[]]></tooltip>
+				<drillclass><![CDATA[]]></drillclass>
+				<CustomValues>
+					<TYPE>horizontal</TYPE>
+				</CustomValues>
+				<query>
+					<sql><![CDATA[SELECT * FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE DNAME=:DNAME)]]></sql>
+					<binds>
+						<bind id="DNAME">
+							<prompt><![CDATA[DNAME]]></prompt>
+							<tooltip><![CDATA[DNAME]]></tooltip>
+							<value><![CDATA[NULL_VALUE]]></value>
+							<bracket><![CDATA[null]]></bracket>
+						</bind>
+					</binds>
+				</query>
+					<pdf version="VERSION_1_7" compression="CONTENT">
+						<docproperty title="null" author="null" subject="null" keywords="null" />
+						<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+						<column>
+							<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+							<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+							<blob blob="NONE" zip="false" />
+						</column>
+						<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+						<header enable="false" generatedate="false">
+							<data>
+							
+						
+						
+						
+						
+					null																																				</data>
+						</header>
+						<footer enable="false" generatedate="false">
+							<data value="null" />
+						</footer>
+						<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+							<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+						</security>
+						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+					</pdf>
+			</display>
+		</display>
+		<display id="5dfc0f3c-0149-1000-8006-c0a858eeb059" type="" style="Table" enable="true">
+			<name><![CDATA[ParentChild - SQL]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT * FROM DEPT ORDER BY DEPTNO]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					
+					
+					
+					null																										</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+			<display id="" type="" style="Table" enable="true">
+				<name><![CDATA[EmpDeptDetail]]></name>
+				<description><![CDATA[]]></description>
+				<tooltip><![CDATA[]]></tooltip>
+				<drillclass><![CDATA[]]></drillclass>
+				<CustomValues>
+					<TYPE>horizontal</TYPE>
+				</CustomValues>
+				<query>
+					<sql><![CDATA[SELECT * FROM EMP WHERE DEPTNO=:DEPTNO]]></sql>
+					<binds>
+						<bind id="DEPTNO">
+							<prompt><![CDATA[DEPTNO]]></prompt>
+							<tooltip><![CDATA[DEPTNO]]></tooltip>
+							<value><![CDATA[NULL_VALUE]]></value>
+							<bracket><![CDATA[null]]></bracket>
+						</bind>
+					</binds>
+				</query>
+					<pdf version="VERSION_1_7" compression="CONTENT">
+						<docproperty title="null" author="null" subject="null" keywords="null" />
+						<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+						<column>
+							<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+							<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+							<blob blob="NONE" zip="false" />
+						</column>
+						<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+						<header enable="false" generatedate="false">
+							<data>
+							
+						
+						
+						
+						null																															</data>
+						</header>
+						<footer enable="false" generatedate="false">
+							<data value="null" />
+						</footer>
+						<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+							<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+						</security>
+						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+					</pdf>
+			</display>
+		</display>
+		<display id="5e151fae-0149-1000-8009-c0a858eeb059" type="" style="Table" enable="true">
+			<name><![CDATA[ParentChild - SQL + All Entry]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT NULL AS DEPTNO, 'ALL' AS DNAME,'ALL' AS LOC FROM DUAL
+UNION ALL
+SELECT * FROM DEPT ORDER BY DEPTNO NULLS FIRST]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					
+					
+					
+					
+				null																														</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+			<display id="" type="" style="Table" enable="true">
+				<name><![CDATA[EmpDeptDetail]]></name>
+				<description><![CDATA[]]></description>
+				<tooltip><![CDATA[]]></tooltip>
+				<drillclass><![CDATA[]]></drillclass>
+				<CustomValues>
+					<TYPE>horizontal</TYPE>
+				</CustomValues>
+				<query>
+					<sql><![CDATA[SELECT * 
+FROM EMP 
+WHERE 
+CASE WHEN DEPTNO=:DEPTNO THEN 1
+     WHEN :DEPTNO IS NULL THEN 1
+     ELSE 0
+END = 1
+ORDER BY ENAME]]></sql>
+					<binds>
+						<bind id="DEPTNO">
+							<prompt><![CDATA[DEPTNO]]></prompt>
+							<tooltip><![CDATA[DEPTNO]]></tooltip>
+							<value><![CDATA[NULL_VALUE]]></value>
+							<bracket><![CDATA[null]]></bracket>
+						</bind>
+					</binds>
+				</query>
+					<pdf version="VERSION_1_7" compression="CONTENT">
+						<docproperty title="null" author="null" subject="null" keywords="null" />
+						<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+						<column>
+							<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+							<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+							<blob blob="NONE" zip="false" />
+						</column>
+						<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+						<header enable="false" generatedate="false">
+							<data>
+							
+						
+						
+						
+						
+					null																																				</data>
+						</header>
+						<footer enable="false" generatedate="false">
+							<data value="null" />
+						</footer>
+						<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+							<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+						</security>
+						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+					</pdf>
+			</display>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[HTML - Internal Render]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="f161bfac-0148-1000-8004-0a1a52788e14" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[PL/SQL DBMS Output - Parameter Passing Example]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<query>
+				<sql><![CDATA[DECLARE
+
+  myChar VARCHAR2(15) := ''||:CharString;
+  myNum NUMBER := 0+:myNumber;
+  
+BEGIN
+  
+  DBMS_OUTPUT.PUT_LINE('<P>Character String = "'||myChar||'"</P>');
+  DBMS_OUTPUT.PUT_LINE('<P>Number String = "'||myNum||'"</P>');
+  
+
+END;]]></sql>
+				<binds>
+					<bind id="CharString">
+						<prompt><![CDATA[CharString]]></prompt>
+						<tooltip><![CDATA[CharString]]></tooltip>
+						<value><![CDATA[jonxie]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+					<bind id="myNumber">
+						<prompt><![CDATA[myNumber]]></prompt>
+						<tooltip><![CDATA[myNumber]]></tooltip>
+						<value><![CDATA[12345]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+						
+						
+						null																																										</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="f134edab-0148-1000-8003-0a1a52788e14" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[PLSQL/DBMS Output - Capabilities]]></name>
+			<description><![CDATA[What are the capabilities of the built-in rendering engine? ]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<query>
+				<sql><![CDATA[BEGIN
+DBMS_OUTPUT.PUT_LINE('<a NAME="TOP">');
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>Header Test H1</H1>');
+DBMS_OUTPUT.PUT_LINE('<H2>Header Test H2</H2>');
+DBMS_OUTPUT.PUT_LINE('<H3>Header Test H3</H3>');
+
+
+
+DBMS_OUTPUT.PUT_LINE('<H1>Inline CSS Test 1</H1>');
+DBMS_OUTPUT.PUT_LINE('<P style="color: red">This is red text</P>');
+
+DBMS_OUTPUT.PUT_LINE('<H1>Inline CSS Test 2</H1>');
+DBMS_OUTPUT.PUT_LINE('<P style="color: blue; font-size : 18pt; font-family: verdana;">This is blue Verdana family text at 18pt</P>');
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>Table Test</H1>');
+DBMS_OUTPUT.PUT_LINE('<TABLE BORDER=1>');
+DBMS_OUTPUT.PUT_LINE('<TR><TD>Row 1 Col A</TD><TD>Row 1 Col B</TD></TR>');
+DBMS_OUTPUT.PUT_LINE('<TR><TD>Row 2 Col A</TD><TD>Row 2 Col B</TD></TR>');
+DBMS_OUTPUT.PUT_LINE('<TR><TD>Row 3 Col A</TD><TD>Row 3 Col B</TD></TR>');
+DBMS_OUTPUT.PUT_LINE('</TABLE>');
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>JPEG Test</H1>');
+DBMS_OUTPUT.PUT_LINE('<IMG SRC="http://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg">');
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>PNG Test</H1>');
+DBMS_OUTPUT.PUT_LINE('<img src="http://www.schaik.com/pngsuite/basi3p02.png">');
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>List Test</H1>');
+DBMS_OUTPUT.PUT_LINE('<UL>');
+DBMS_OUTPUT.PUT_LINE('<LI>List Item 1');
+DBMS_OUTPUT.PUT_LINE('<LI>List Item 2');
+DBMS_OUTPUT.PUT_LINE('<LI>List Item 2');
+DBMS_OUTPUT.PUT_LINE('</UL>');
+
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>Anchor Test</H1>');
+DBMS_OUTPUT.PUT_LINE('<a href="#TOP">Go To Top</a>');
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1>PRE Test</H1>');
+DBMS_OUTPUT.PUT_LINE('<PRE>This is preformatted text</PRE>');
+
+
+
+DBMS_OUTPUT.PUT_LINE('<HR>');
+DBMS_OUTPUT.PUT_LINE('<H1></H1>');
+DBMS_OUTPUT.PUT_LINE('');
+
+
+END;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+						
+						
+						null																																										</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Charts]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="73bb988a-0149-1000-8036-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Chart - Complex 1 - Multiple Series]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
+				<DATA_MAP_SERIES>\,"ENAME"</DATA_MAP_SERIES>
+				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
+				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
+				<DATA_MAP_COLNAMES>\,"ENAME","SAMPLE_DATE","VALUE"</DATA_MAP_COLNAMES>
+				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
+				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
+				<GRID_WIDTH>THINNER</GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
+				<TYPE>LINE_VERT_ABS</TYPE>
+				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
+				<DATA_MAP_VALUES>\,"VALUE"</DATA_MAP_VALUES>
+				<DATA_MAP_COUNT>1</DATA_MAP_COUNT>
+				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
+				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
+				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
+				<STYLE>Default</STYLE>
+				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
+				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
+				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
+				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
+				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
+				<DATA_MAP_COLUMNS>\,"SAMPLE_DATE"</DATA_MAP_COLUMNS>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select * From weight order by 1,2]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="72ebbe0c-0149-1000-801a-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Chart - Simple 1 - Deptno Categories]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
+				<DATA_MAP_SERIES>\,"ENAME"</DATA_MAP_SERIES>
+				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
+				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
+				<DATA_MAP_COLNAMES>\,"DEPTNO","ENAME","SAL"</DATA_MAP_COLNAMES>
+				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
+				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
+				<GRID_WIDTH>THINNER</GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
+				<TYPE>BAR_VERT_CLUST</TYPE>
+				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
+				<DATA_MAP_VALUES>\,"SAL"</DATA_MAP_VALUES>
+				<DATA_MAP_COUNT>1</DATA_MAP_COUNT>
+				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
+				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
+				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
+				<STYLE>Default</STYLE>
+				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
+				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
+				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
+				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
+				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
+				<DATA_MAP_COLUMNS>\,"DEPTNO"</DATA_MAP_COLUMNS>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Category Group / Series / Data Value
+
+select deptno, ename, sal
+from emp 
+order by 1]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="72fb31e8-0149-1000-8034-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Chart - Simple 1 - EName  Categories]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
+				<DATA_MAP_SERIES>\,"DEPTNO"</DATA_MAP_SERIES>
+				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
+				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
+				<DATA_MAP_COLNAMES>\,"DEPTNO","ENAME","SAL"</DATA_MAP_COLNAMES>
+				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
+				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
+				<GRID_WIDTH>THINNER</GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
+				<TYPE>BAR_VERT_CLUST</TYPE>
+				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
+				<DATA_MAP_VALUES>\,"SAL"</DATA_MAP_VALUES>
+				<DATA_MAP_COUNT>1</DATA_MAP_COUNT>
+				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
+				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
+				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
+				<STYLE>Default</STYLE>
+				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
+				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
+				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
+				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
+				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
+				<DATA_MAP_COLUMNS>\,"ENAME"</DATA_MAP_COLUMNS>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Category Group / Series / Data Value
+
+select deptno, ename, sal
+from emp 
+order by 1]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+				null										</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="72f33394-0149-1000-8023-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Chart - Simple 2 - ENAME as Series]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>BAR_VERT_CLUST</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Category Group / Series / Data Value
+
+select null, ename, sal
+from emp 
+order by 1]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="72f40059-0149-1000-8025-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Chart - Simple 3 - Hardcoded Series]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>BAR_VERT_CLUST</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Category Group / Series / Data Value
+select ename, 'Dollars Per Month', sal 
+from emp 
+order by 1]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[DrillDown]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="5f1a15a5-0149-1000-8001-c0a858ee8b61" type="" style="Table" enable="true">
+			<name><![CDATA[Drill Example - Level 1]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT * FROM DEPT]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="Al Nile" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="Al Nile" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="Courier" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					
+					
+					null																					</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="5f1dadbd-0149-1000-8005-c0a858ee8b61" toolbar="false" ><title>Detail</title></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="770e738f-0149-1000-8045-c0a858eecf7c" toolbar="false" ><title>Graph</title></item>		</display>
+		<display id="5f1dadbd-0149-1000-8005-c0a858ee8b61" type="" style="Table" enable="true">
+			<name><![CDATA[Drill Example - Level 2A]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT * FROM EMP WHERE DEPTNO=:DEPTNO]]></sql>
+				<binds>
+					<bind id="DEPTNO">
+						<prompt><![CDATA[DEPTNO]]></prompt>
+						<tooltip><![CDATA[DEPTNO]]></tooltip>
+						<value><![CDATA[10]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					
+					
+					null																					</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="770e738f-0149-1000-8045-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Drill Example - Level 2B]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
+				<DATA_MAP_SERIES>\,"ENAME"</DATA_MAP_SERIES>
+				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
+				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
+				<DATA_MAP_COLNAMES>\,"COMM","DEPTNO","EMPNO","ENAME","HIREDATE","JOB","MGR","SAL"</DATA_MAP_COLNAMES>
+				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
+				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
+				<GRID_WIDTH>THINNER</GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
+				<TYPE>BAR_VERT_CLUST</TYPE>
+				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
+				<DATA_MAP_VALUES>\,"SAL"</DATA_MAP_VALUES>
+				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
+				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
+				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
+				<STYLE>Default</STYLE>
+				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
+				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
+				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
+				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
+				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
+				<DATA_MAP_COLUMNS>\,"ENAME"</DATA_MAP_COLUMNS>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT * FROM EMP WHERE DEPTNO=:DEPTNO]]></sql>
+				<binds>
+					<bind id="DEPTNO">
+						<prompt><![CDATA[DEPTNO]]></prompt>
+						<tooltip><![CDATA[DEPTNO]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Gauge]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="6ead0b4b-0149-1000-8008-c0a858eecf7c" type="" style="Table" enable="true">
+			<name><![CDATA[Gauge Example 1]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- SQLDEV:GAUGE:min:max:low threshold:upper threshold:value to graph
+SELECT 'SQLDEV:GAUGE:0:100:33:66:50'   as MY_GAUGE____________, '0:100:33:66:50' AS CONFIG FROM DUAL
+UNION ALL
+SELECT 'SQLDEV:GAUGE:0:100:80:90:50'   as MY_GAUGE____________, '0:100:80:90:50' AS CONFIG FROM DUAL
+UNION ALL
+SELECT 'SQLDEV:GAUGE:0:100:100:100:50' as MY_GAUGE____________, '0:100:100:100:50' AS CONFIG FROM DUAL
+UNION ALL
+SELECT 'SQLDEV:GAUGE:0:100:0:100:50'   as MY_GAUGE____________, '0:100:0:100:50' AS CONFIG FROM DUAL
+UNION ALL
+SELECT 'SQLDEV:GAUGE:0:100:0:0:50'     as MY_GAUGE____________, '0:100:0:0:50' AS CONFIG FROM DUAL]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="6445803b-0149-1000-8001-c0a858ee5997" type="" style="Table" enable="true">
+			<name><![CDATA[Gauge Example 2]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT ENAME, SAL, 'SQLDEV:GAUGE:0:5000:4000:4500:'||SAL AS "Salary Graph             " 
+FROM EMP 
+ORDER BY SAL DESC]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+					null											</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+</folder>
+</displays>
