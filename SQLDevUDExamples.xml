@@ -4,59 +4,7 @@
 	<name><![CDATA[Examples]]></name>
 	<tooltip><![CDATA[Examples]]></tooltip>
 	<description><![CDATA[ ]]></description>
-		<display id="59c90032-0149-1000-8001-c0a858eeb059" type="" style="plsql-dbms_output" enable="true" requiredLic="diagnostics">
-		<name><![CDATA[ASH Report For The Past 30 Minutes]]></name>
-		<description><![CDATA[]]></description>
-		<tooltip><![CDATA[]]></tooltip>
-		<drillclass><![CDATA[]]></drillclass>
-		<query>
-			<sql><![CDATA[declare
-dbid number;
-instance_id number;
-begin
-select dbid into dbid from gv$database;
-select instance_number into instance_id from v$instance;
-dbms_output.enable(500000);
-dbms_output.put_line('<PRE>');
-for rc in ( select output from 
-   table(dbms_workload_repository.ash_report_text( dbid,instance_id,SYSDATE-31/1440, SYSDATE-1/1440))) loop
-   dbms_output.put_line(rc.output);
-end loop;
-dbms_output.put_line('</PRE>') ;
-end;]]></sql>
-		</query>
-	</display>
-	<display id="59cbed38-0149-1000-8003-c0a858eeb059" type="" style="plsql-dbms_output" enable="true" requiredLic="diagnostics">
-		<name><![CDATA[Last AWR Report]]></name>
-		<description><![CDATA[]]></description>
-		<tooltip><![CDATA[]]></tooltip>
-		<drillclass><![CDATA[]]></drillclass>
-		<CustomValues>
-		</CustomValues>
-		<query>
-			<sql><![CDATA[declare
-dbid number;
-instance_id number;
-start_id number;
-end_id number;
-begin
-dbms_output.enable(1000000);
-select max(snap_id)-1,max(snap_id) into start_id,end_id from dba_hist_snapshot;
-select dbid into dbid from gv$database;
-select instance_number into instance_id from v$instance;
-
-dbms_output.put_line('<PRE>');
-for rc in ( select output from 
-   table(dbms_workload_repository.awr_report_text(dbid,instance_id,start_id,end_id)) 
-           ) loop
-  -- dbms_output.put_line('<BR>');
-   dbms_output.put_line(rc.output);
-end loop;
-dbms_output.put_line('</PRE>');
-end;]]></sql>
-		</query>
-	</display>
-	<display id="6ee58f91-0149-1000-8013-c0a858eecf7c" type="" style="Table" enable="true">
+		<display id="6ee58f91-0149-1000-8013-c0a858eecf7c" type="" style="Table" enable="true">
 		<name><![CDATA[Simple UDR]]></name>
 		<description><![CDATA[]]></description>
 		<tooltip><![CDATA[]]></tooltip>
@@ -228,7 +176,7 @@ END;]]></sql>
  WHERE SAL < :SAL_LIMIT]]></sql>
 				<binds>
 					<bind id="SAL_LIMIT">
-						<prompt><![CDATA[SAL_LIMIT]]></prompt>
+						<prompt><![CDATA[Salary Limit]]></prompt>
 						<tooltip><![CDATA[SAL_LIMIT]]></tooltip>
 						<value><![CDATA[2500]]></value>
 						<bracket><![CDATA[null]]></bracket>
@@ -247,6 +195,195 @@ END;]]></sql>
 					<header enable="false" generatedate="false">
 						<data>
 						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="7e158653-0149-1000-806b-c0a858eecf7c" type="" style="Table" enable="true">
+			<name><![CDATA[Bind Test - All Option with Null (Logic)]]></name>
+			<description><![CDATA[Tablespaces]]></description>
+			<tooltip><![CDATA[Tablespaces]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select TABLESPACE_NAME "Tablespace",
+                                      BLOCK_SIZE "Block_Size",
+                                      INITIAL_EXTENT "Initial_Extent",
+                                      NEXT_EXTENT "Next_Extent",
+                                      MIN_EXTENTS "Minimum_Extents",
+                                      MAX_EXTENTS "Maximum_Extents",
+                                      PCT_INCREASE "Percent_Increase",
+                                      MIN_EXTLEN "Minimum_Extent_Length",
+                                      STATUS "Status",
+                                      CONTENTS "Contents",
+                                      LOGGING "Logging",
+                                      FORCE_LOGGING "Force_Logging",
+                                      EXTENT_MANAGEMENT "Extent_Management",
+                                      ALLOCATION_TYPE "Allocation_Type",
+                                      PLUGGED_IN "Plugged_In",
+                                      SEGMENT_SPACE_MANAGEMENT "Segment_Space_Management"
+                                from  sys.dba_tablespaces
+                                where (:TABLESPACE_NAME is null or 
+                                       instr(lower(tablespace_name),lower(:TABLESPACE_NAME)) > 0)
+                                order by 1]]></sql>
+				<binds>
+					<bind id="TABLESPACE_NAME">
+						<prompt><![CDATA[Tablespace Name]]></prompt>
+						<tooltip><![CDATA[Name or part of name to search for (case insensitive).]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+			<query minversion="10.1">
+				<sql><![CDATA[select TABLESPACE_NAME "Tablespace",
+                                      BLOCK_SIZE "Block_Size",
+                                      INITIAL_EXTENT "Initial_Extent",
+                                      NEXT_EXTENT "Next_Extent",
+                                      MIN_EXTENTS "Minimum_Extents",
+                                      MAX_EXTENTS "Maximum_Extents",
+                                      PCT_INCREASE "Percent_Increase",
+                                      MIN_EXTLEN "Minimum_Extent_Length",
+                                      STATUS "Status",
+                                      CONTENTS "Contents",
+                                      LOGGING "Logging",
+                                      FORCE_LOGGING "Force_Logging",
+                                      EXTENT_MANAGEMENT "Extent_Management",
+                                      ALLOCATION_TYPE "Allocation_Type",
+                                      PLUGGED_IN "Plugged_In",
+                                      SEGMENT_SPACE_MANAGEMENT "Segment_Space_Management",
+                                      DEF_TAB_COMPRESSION "Default_Tab_Compression",
+                                      RETENTION "Retention",
+                                      BIGFILE "Big File"
+                                from  sys.dba_tablespaces
+                                where (:TABLESPACE_NAME is null or 
+                                       instr(lower(tablespace_name),lower(:TABLESPACE_NAME)) > 0)
+                                order by 1]]></sql>
+				<binds>
+					<bind id="TABLESPACE_NAME">
+						<prompt><![CDATA[Tablespace Name]]></prompt>
+						<tooltip><![CDATA[Name or part of name to search for (case insensitive).]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="7e555c70-0149-1000-8073-c0a858eecf7c" type="" style="Table" enable="true">
+			<name><![CDATA[Bind Test - All Option with Null (Case)]]></name>
+			<description><![CDATA[Tablespaces]]></description>
+			<tooltip><![CDATA[Tablespaces]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select TABLESPACE_NAME "Tablespace",
+                                      BLOCK_SIZE "Block_Size",
+                                      INITIAL_EXTENT "Initial_Extent",
+                                      NEXT_EXTENT "Next_Extent",
+                                      MIN_EXTENTS "Minimum_Extents",
+                                      MAX_EXTENTS "Maximum_Extents",
+                                      PCT_INCREASE "Percent_Increase",
+                                      MIN_EXTLEN "Minimum_Extent_Length",
+                                      STATUS "Status",
+                                      CONTENTS "Contents",
+                                      LOGGING "Logging",
+                                      FORCE_LOGGING "Force_Logging",
+                                      EXTENT_MANAGEMENT "Extent_Management",
+                                      ALLOCATION_TYPE "Allocation_Type",
+                                      PLUGGED_IN "Plugged_In",
+                                      SEGMENT_SPACE_MANAGEMENT "Segment_Space_Management"
+                                from  sys.dba_tablespaces
+                                where (:TABLESPACE_NAME is null or 
+                                       instr(lower(tablespace_name),lower(:TABLESPACE_NAME)) > 0)
+                                order by 1]]></sql>
+				<binds>
+					<bind id="TABLESPACE_NAME">
+						<prompt><![CDATA[Tablespace Name]]></prompt>
+						<tooltip><![CDATA[Name or part of name to search for (case insensitive).]]></tooltip>
+						<value><![CDATA[temp]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+			<query minversion="10.1">
+				<sql><![CDATA[select TABLESPACE_NAME "Tablespace",
+                                      BLOCK_SIZE "Block_Size",
+                                      INITIAL_EXTENT "Initial_Extent",
+                                      NEXT_EXTENT "Next_Extent",
+                                      MIN_EXTENTS "Minimum_Extents",
+                                      MAX_EXTENTS "Maximum_Extents",
+                                      PCT_INCREASE "Percent_Increase",
+                                      MIN_EXTLEN "Minimum_Extent_Length",
+                                      STATUS "Status",
+                                      CONTENTS "Contents",
+                                      LOGGING "Logging",
+                                      FORCE_LOGGING "Force_Logging",
+                                      EXTENT_MANAGEMENT "Extent_Management",
+                                      ALLOCATION_TYPE "Allocation_Type",
+                                      PLUGGED_IN "Plugged_In",
+                                      SEGMENT_SPACE_MANAGEMENT "Segment_Space_Management",
+                                      DEF_TAB_COMPRESSION "Default_Tab_Compression",
+                                      RETENTION "Retention",
+                                      BIGFILE "Big File"
+                                from  sys.dba_tablespaces
+                                where CASE WHEN :TABLESPACE_NAME is null THEN 1
+                                           WHEN (instr(lower(tablespace_name),lower(:TABLESPACE_NAME)) > 0) THEN 1
+                                           ELSE 0
+                                      END = 1
+                                order by 1]]></sql>
+				<binds>
+					<bind id="TABLESPACE_NAME">
+						<prompt><![CDATA[Tablespace Name]]></prompt>
+						<tooltip><![CDATA[Name or part of name to search for (case insensitive).]]></tooltip>
+						<value><![CDATA[temp]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+				null										</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
@@ -716,6 +853,51 @@ END;]]></sql>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
+		<display id="7b7e8cc0-0149-1000-805e-c0a858eecf7c" type="" style="Table" enable="true">
+			<name><![CDATA[HTML Column Inline]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT '<HTML><P style="color: red">This is red text with CSS styling</P></HTML>' as text from dual
+  union all
+SELECT '<HTML><font color="red">This is red text with Font tag</font></HTML>' from dual
+  union all
+SELECT '<HTML><P style="color: blue; font-size : 18pt; font-family: verdana;">'||
+         'This is blue Verdana family text at 18pt with CSS styling</P></HTML>' from dual
+  union all
+SELECT '<HTML><PRE>This is preformatted text with PRE tag</PRE></HTML>' from dual
+  union all
+SELECT '<HTML><IMG SRC="http://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg"'||
+       ' height=100></HTML>' FROM DUAL
+  union all
+SELECT '<HTML><ul><li>Item 1<li>Item 2</ul></HTML>' FROM DUAL]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
 	</folder>
 	<folder>
 		<name><![CDATA[Charts]]></name>
@@ -1004,7 +1186,7 @@ order by 1]]></sql>
 		<tooltip><![CDATA[]]></tooltip>
 		<description><![CDATA[]]></description>
 			<display id="5f1a15a5-0149-1000-8001-c0a858ee8b61" type="" style="Table" enable="true">
-			<name><![CDATA[Drill Example - Level 1]]></name>
+			<name><![CDATA[Drill Example - Level 1 - Table]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[null]]></drillclass>
@@ -1012,7 +1194,8 @@ order by 1]]></sql>
 				<TYPE>horizontal</TYPE>
 			</CustomValues>
 			<query>
-				<sql><![CDATA[SELECT * FROM DEPT]]></sql>
+				<sql><![CDATA[SELECT * 
+FROM DEPT]]></sql>
 			</query>
 				<pdf version="VERSION_1_7" compression="CONTENT">
 					<docproperty title="null" author="null" subject="null" keywords="null" />
@@ -1038,9 +1221,9 @@ order by 1]]></sql>
 					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
-<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="5f1dadbd-0149-1000-8005-c0a858ee8b61" toolbar="false" ><title>Detail</title></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="770e738f-0149-1000-8045-c0a858eecf7c" toolbar="false" ><title>Graph</title></item>		</display>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="5f1dadbd-0149-1000-8005-c0a858ee8b61" toolbar="false" ><title>Detail - Table</title></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="770e738f-0149-1000-8045-c0a858eecf7c" toolbar="false" ><title>Detail - Chart</title></item>		</display>
 		<display id="5f1dadbd-0149-1000-8005-c0a858ee8b61" type="" style="Table" enable="true">
-			<name><![CDATA[Drill Example - Level 2A]]></name>
+			<name><![CDATA[Drill Example - Level 2A - Table]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[null]]></drillclass>
@@ -1084,7 +1267,7 @@ order by 1]]></sql>
 				</pdf>
 		</display>
 		<display id="770e738f-0149-1000-8045-c0a858eecf7c" type="" style="Chart" enable="true">
-			<name><![CDATA[Drill Example - Level 2B]]></name>
+			<name><![CDATA[Drill Example - Level 2B - Chart]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[null]]></drillclass>
@@ -1155,6 +1338,69 @@ order by 1]]></sql>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
+		<display id="788068bb-0149-1000-804c-c0a858eecf7c" type="" style="Chart" enable="true">
+			<name><![CDATA[Drill Example - Level 1 - Chart]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
+				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
+				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
+				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
+				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
+				<GRID_WIDTH>THINNER</GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
+				<TYPE>BAR_VERT_CLUST</TYPE>
+				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
+				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
+				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
+				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
+				<STYLE>Default</STYLE>
+				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
+				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
+				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
+				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
+				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select DNAME, 'Employee Count', COUNT(*), dept.DEPTNO
+FROM dept join emp on dept.deptno=emp.deptno 
+group by DName, dept.DEPTNO
+ORDER BY 1]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="5f1dadbd-0149-1000-8005-c0a858ee8b61" toolbar="false" ><title>Detail - Text</title></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="770e738f-0149-1000-8045-c0a858eecf7c" toolbar="false" ><title>Detail - Chart</title></item>		</display>
 	</folder>
 	<folder>
 		<name><![CDATA[Gauge]]></name>
@@ -1228,6 +1474,208 @@ ORDER BY SAL DESC]]></sql>
 						<data>
 						
 					null											</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[Automation]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="59c90032-0149-1000-8001-c0a858eeb059" type="" style="plsql-dbms_output" enable="true" requiredLic="diagnostics">
+			<name><![CDATA[ASH Report For The Past 30 Minutes]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[declare
+dbid number;
+instance_id number;
+begin
+select dbid into dbid from gv$database;
+select instance_number into instance_id from v$instance;
+dbms_output.enable(500000);
+dbms_output.put_line('<PRE>');
+for rc in ( select output from 
+   table(dbms_workload_repository.ash_report_text( dbid,instance_id,SYSDATE-31/1440, SYSDATE-1/1440))) loop
+   dbms_output.put_line(rc.output);
+end loop;
+dbms_output.put_line('</PRE>') ;
+end;]]></sql>
+			</query>
+		</display>
+		<display id="59cbed38-0149-1000-8003-c0a858eeb059" type="" style="plsql-dbms_output" enable="true" requiredLic="diagnostics">
+			<name><![CDATA[Last AWR Report]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[declare
+dbid number;
+instance_id number;
+start_id number;
+end_id number;
+begin
+dbms_output.enable(1000000);
+select max(snap_id)-1,max(snap_id) into start_id,end_id from dba_hist_snapshot;
+select dbid into dbid from gv$database;
+select instance_number into instance_id from v$instance;
+
+dbms_output.put_line('<PRE>');
+for rc in ( select output from 
+   table(dbms_workload_repository.awr_report_text(dbid,instance_id,start_id,end_id)) 
+           ) loop
+  -- dbms_output.put_line('<BR>');
+   dbms_output.put_line(rc.output);
+end loop;
+dbms_output.put_line('</PRE>');
+end;]]></sql>
+			</query>
+		</display>
+	</folder>
+	<folder>
+		<name><![CDATA[XML Report Def Fun]]></name>
+		<tooltip><![CDATA[]]></tooltip>
+		<description><![CDATA[]]></description>
+			<display id="7e1ad974-0149-1000-806c-c0a858eecf7c" type="" style="plsql-dbms_output" enable="true">
+			<name><![CDATA[Diag Pack Acknowledgement]]></name>
+			<description><![CDATA[Works in conjunction with the Database -> Licensing preference page. ]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[declare
+dbid number;
+instance_id number;
+begin
+select dbid into dbid from gv$database;
+select instance_number into instance_id from v$instance;
+dbms_output.enable(500000);
+dbms_output.put_line('<PRE>');
+for rc in ( select output from 
+   table(dbms_workload_repository.ash_report_text( dbid,instance_id,SYSDATE-31/1440, SYSDATE-1/1440))) loop
+   dbms_output.put_line(rc.output);
+end loop;
+dbms_output.put_line('</PRE>') ;
+end;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
+						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
+					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="7e1bd518-0149-1000-806e-c0a858eecf7c" type="" style="Table" enable="true">
+			<name><![CDATA[Multiple Version Queries]]></name>
+			<description><![CDATA[Tablespaces]]></description>
+			<tooltip><![CDATA[Tablespaces]]></tooltip>
+			<drillclass><![CDATA[null]]></drillclass>
+			<CustomValues>
+				<TYPE>horizontal</TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select TABLESPACE_NAME "Tablespace",
+                                      BLOCK_SIZE "Block_Size",
+                                      INITIAL_EXTENT "Initial_Extent",
+                                      NEXT_EXTENT "Next_Extent",
+                                      MIN_EXTENTS "Minimum_Extents",
+                                      MAX_EXTENTS "Maximum_Extents",
+                                      PCT_INCREASE "Percent_Increase",
+                                      MIN_EXTLEN "Minimum_Extent_Length",
+                                      STATUS "Status",
+                                      CONTENTS "Contents",
+                                      LOGGING "Logging",
+                                      FORCE_LOGGING "Force_Logging",
+                                      EXTENT_MANAGEMENT "Extent_Management",
+                                      ALLOCATION_TYPE "Allocation_Type",
+                                      PLUGGED_IN "Plugged_In",
+                                      SEGMENT_SPACE_MANAGEMENT "Segment_Space_Management"
+                                from  sys.dba_tablespaces
+                                where (:TABLESPACE_NAME is null or 
+                                       instr(lower(tablespace_name),lower(:TABLESPACE_NAME)) > 0)
+                                order by 1]]></sql>
+				<binds>
+					<bind id="TABLESPACE_NAME">
+						<prompt><![CDATA[Tablespace Name]]></prompt>
+						<tooltip><![CDATA[Name or part of name to search for (case insensitive).]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+			<query minversion="10.1">
+				<sql><![CDATA[select TABLESPACE_NAME "Tablespace",
+                                      BLOCK_SIZE "Block_Size",
+                                      INITIAL_EXTENT "Initial_Extent",
+                                      NEXT_EXTENT "Next_Extent",
+                                      MIN_EXTENTS "Minimum_Extents",
+                                      MAX_EXTENTS "Maximum_Extents",
+                                      PCT_INCREASE "Percent_Increase",
+                                      MIN_EXTLEN "Minimum_Extent_Length",
+                                      STATUS "Status",
+                                      CONTENTS "Contents",
+                                      LOGGING "Logging",
+                                      FORCE_LOGGING "Force_Logging",
+                                      EXTENT_MANAGEMENT "Extent_Management",
+                                      ALLOCATION_TYPE "Allocation_Type",
+                                      PLUGGED_IN "Plugged_In",
+                                      SEGMENT_SPACE_MANAGEMENT "Segment_Space_Management",
+                                      DEF_TAB_COMPRESSION "Default_Tab_Compression",
+                                      RETENTION "Retention",
+                                      BIGFILE "Big File"
+                                from  sys.dba_tablespaces
+                                where (:TABLESPACE_NAME is null or 
+                                       instr(lower(tablespace_name),lower(:TABLESPACE_NAME)) > 0)
+                                order by 1]]></sql>
+				<binds>
+					<bind id="TABLESPACE_NAME">
+						<prompt><![CDATA[Tablespace Name]]></prompt>
+						<tooltip><![CDATA[Name or part of name to search for (case insensitive).]]></tooltip>
+						<value><![CDATA[NULL_VALUE]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
