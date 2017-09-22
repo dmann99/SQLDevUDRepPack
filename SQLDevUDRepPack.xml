@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <displays>
 <folder>
-	<name><![CDATA[SQLDevUDRepPack v0.5]]></name>
-	<tooltip><![CDATA[SQLDevUDRepPack v0.5]]></tooltip>
-	<description><![CDATA[ba6.us - SQL Developer Custom Report Library v0.5
+	<name><![CDATA[SQLDevUDRepPack v0.6]]></name>
+	<tooltip><![CDATA[SQLDevUDRepPack v0.6]]></tooltip>
+	<description><![CDATA[ba6.us - SQL Developer Custom Report Library v0.6
 
-Released 04/2016]]></description>
+Released 09/2017]]></description>
 		<folder>
 		<name><![CDATA[Exadata]]></name>
 		<tooltip><![CDATA[Exadata]]></tooltip>
@@ -21,7 +21,7 @@ Released 04/2016]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Status, Duration, SQL_ID, User, Parallel, Database Time, IO Requests, Start, Ended, SQL Text
@@ -169,24 +169,44 @@ ORDER BY SUBSTR(STATUS,1,4) DESC,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
-<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="b5b02239-0132-1000-8004-0a01574db61a" toolbar="false" ><title>Detail</title></item>		</display>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="b5b02239-0132-1000-8004-0a01574db61a" toolbar="false" ><title>Detail</title><sql><![CDATA[]]></sql><script language="js"><![CDATA[]]></script><help></help></item>		</display>
 		<display id="b5b02239-0132-1000-8004-0a01574db61a" type="" style="Table" enable="true">
 			<name><![CDATA[SQL Monitoring - Child (Detail)]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select * From v$sql_plan_monitor 
@@ -323,14 +343,34 @@ where key = :key]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -340,7 +380,7 @@ where key = :key]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[WITH DataQuery as (select
@@ -480,14 +520,34 @@ FROM DataQuery]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -496,6 +556,8 @@ FROM DataQuery]]></sql>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[SET LONG 1000000
 SET LONGCHUNKSIZE 1000000
@@ -644,14 +706,34 @@ FROM dual;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -666,7 +748,7 @@ FROM dual;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select s1.username || '@' || s1.machine 
@@ -798,14 +880,34 @@ FROM dual;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -815,7 +917,7 @@ FROM dual;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- In Flight SQL (with SQL as CLOB, RAC Aware)
@@ -964,14 +1066,34 @@ SELECT SES.INST_ID, nvl(ses.username,'ORACLE PROC')||' ('||ses.sid||')' UNAM,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -981,7 +1103,7 @@ SELECT SES.INST_ID, nvl(ses.username,'ORACLE PROC')||' ('||ses.sid||')' UNAM,
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT ROUND(sofar/totalwork*100,2), gv$session_longops.* 
@@ -1114,14 +1236,34 @@ SELECT SES.INST_ID, nvl(ses.username,'ORACLE PROC')||' ('||ses.sid||')' UNAM,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -1130,6 +1272,8 @@ SELECT SES.INST_ID, nvl(ses.username,'ORACLE PROC')||' ('||ses.sid||')' UNAM,
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[-- David Mann
 -- http://ba6.us
@@ -1302,14 +1446,34 @@ END;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -1319,7 +1483,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT * 
@@ -1386,14 +1550,34 @@ ORDER BY CTIME DESC]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -1408,7 +1592,7 @@ ORDER BY CTIME DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT TO_CHAR(TIMESTAMP,'YYYY-MM-DD HH24:MI') as Time, 
@@ -1544,14 +1728,34 @@ ORDER BY CTIME DESC]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -1561,7 +1765,7 @@ ORDER BY CTIME DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT USERID, NAME, USERHOST, NTIMESTAMP#, RETURNCODE, userhost  
@@ -1569,7 +1773,6 @@ FROM sys.aud$ A, AUDIT_ACTIONS AA
 WHERE A.ACTION#=AA.ACTION
   AND AA.NAME IN ('LOGON','LOGOFF') 
   AND userid NOT IN ('DBSNMP')
-  AND userid='DWUSR'
 ORDER BY NTIMESTAMP# DESC]]></sql>
 			</query>
 				<pdf version="VERSION_1_7" compression="CONTENT">
@@ -1694,6 +1897,29 @@ ORDER BY NTIMESTAMP# DESC]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 				
 				
@@ -1702,30 +1928,27 @@ ORDER BY NTIMESTAMP# DESC]]></sql>
 				
 				
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
 		<display id="fdbcb524-014c-1000-8001-0a027f9f5349" type="" style="Table" enable="true">
-			<name><![CDATA[Recent Login Activity]]></name>
+			<name><![CDATA[Recent User App Login Activity]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT TO_CHAR(TIMESTAMP,'YYYY-MM-DD HH24:MI:SS') as Time, 
        USERNAME, 
-       OS_USERNAME,
-       USERHOST, RETURNCODE, 
+       OS_USERNAME, 
+       USERHOST, ACTION_NAME, RETURNCODE, 
        CASE RETURNCODE
          WHEN 0 THEN 'OK'
          WHEN 1017 THEN 'Wrong Username/Password'
@@ -1736,9 +1959,8 @@ ORDER BY NTIMESTAMP# DESC]]></sql>
          WHEN 28004 THEN 'Password verification failed'
          WHEN 28007 THEN 'Password cannot be reused'
        END as Message
-    
   FROM DBA_AUDIT_TRAIL
-  WHERE USERNAME='APPS'
+  WHERE USERNAME NOT IN ('SYS','SYSTEM','DII','DBSNMP')
  ORDER BY TIMESTAMP DESC]]></sql>
 			</query>
 				<pdf version="VERSION_1_7" compression="CONTENT">
@@ -1769,14 +1991,34 @@ ORDER BY NTIMESTAMP# DESC]]></sql>
 						
 						
 						
-						null																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -1791,7 +2033,7 @@ ORDER BY NTIMESTAMP# DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT 
@@ -1803,7 +2045,7 @@ TO_CHAR(begin_interval_time,'MM/DD/YYYY HH24:MI')
   ROUND(elapsed_time_total/1000000,2)                    AS "ElapsedTotal",
   executions_total                                       AS "ExecsTotal",
   px_servers_execs_total AS "PXServers",
-  ROUND((elapsed_time_total/1000000)/executions_total,2) AS "ElapsedPerExec" ,
+  ROUND((elapsed_time_total/1000000)/executions_total,4) AS "ElapsedPerExec" ,
   DBA_HIST_SNAPSHOT.INSTANCE_NUMBER as INST_NUM, 
   dba_hist_sqlstat.*
 FROM dba_hist_sqlstat
@@ -1817,7 +2059,7 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 				<binds>
 					<bind id="sql_id">
 						<prompt><![CDATA[sql_id]]></prompt>
-						<value><![CDATA[0w3x6zaf0865s]]></value>
+						<value><![CDATA[az33m61ym46y4]]></value>
 						<bracket><![CDATA[null]]></bracket>
 					</bind>
 				</binds>
@@ -1949,14 +2191,34 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -1966,12 +2228,12 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select TO_CHAR(TRUNC(end_interval_time),'MM/DD/YYYY HH24:MI') as Day,  
-       sql_id,  
-       COUNT(DISTINCT PLAN_HASH_VALUE) as "PlanCnt",
+       SQL_ID, 
+       PLAN_HASH_VALUE,
        ROUND(SUM(elapsed_time_total/1000000),2) as "Total Elapsed",
        sum(executions_total) as "TotalExecs",
        ROUND(SUM(elapsed_time_total/1000000)/SUM(executions_total),2) as "AvgTimePerExec",
@@ -1979,69 +2241,129 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
        ROUND(MAX(elapsed_time_total/1000000/executions_total),2) as "MaxHourlyAvgElapsed"
 from dba_hist_sqlstat join dba_hist_snapshot on dba_hist_sqlstat.snap_id=dba_hist_snapshot.snap_id  
 where sql_id IN (:sql_id) and executions_total > 0
-GROUP BY TRUNC(end_interval_time), sql_id
+GROUP BY TRUNC(end_interval_time), SQL_ID, PLAN_HASH_VALUE
 ORDER BY 1 DESC]]></sql>
 				<binds>
 					<bind id="sql_id">
 						<prompt><![CDATA[sql_id]]></prompt>
-						<value><![CDATA[46yxxqr480902]]></value>
+						<value><![CDATA[08gcxd2g850vm]]></value>
 						<bracket><![CDATA[null]]></bracket>
 					</bind>
 				</binds>
 			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																								</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
 		</display>
 		<display id="2b6f8ef8-0132-1000-8004-0a01574d2c0a" type="" style="Table" enable="true">
-			<name><![CDATA[AWR - Longest Running SQL - Last n Hours]]></name>
+			<name><![CDATA[AWR - Longest Running User SQL - Last n Days]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
-				<sql><![CDATA[SELECT * FROM (SELECT ELAP_PER_EXEC,
-       EXECUTIONS_TOTAL AS EXEC_CNT,
-       TOTAL_SECONDS,
-       TO_CHAR(BEGIN_INTERVAL_TIME, 'MM-DD-YYYY HH24:MI') || '-' || TO_CHAR(END_INTERVAL_TIME, 'HH24:MI') PERIOD,
-       PARSING_SCHEMA_NAME AS USERNAME,
-       SQL_ID,
-       PLAN_HASH_VALUE,
-       SQL_TEXT
+				<sql><![CDATA[SELECT
+    *
 FROM
-  ( WITH snap AS
-  (SELECT
+    (
+        SELECT
+            elap_per_exec,
+            executions_total AS exec_cnt,
+            total_seconds,
+            TO_CHAR(begin_interval_time,'MM-DD-YYYY HH24:MI')
+             ||  '-'
+             ||  TO_CHAR(end_interval_time,'HH24:MI') period,
+            parsing_schema_name AS username,
+            sql_id,
+            plan_hash_value,
+            sql_text
+        FROM
+            (
+                WITH snap AS (
+                    SELECT
     /*+ MATERIALIZE */
-    SNAP_ID, 
-    BEGIN_INTERVAL_TIME, 
-    END_INTERVAL_TIME
-  FROM dba_hist_snapshot
-  WHERE END_INTERVAL_TIME > (SYSDATE-(:PREVIOUS_HOURS*(1/24)))
-  ),
-  SQL AS (SELECT /*+ MATERIALIZE */ * 
-            FROM dba_hist_sqlstat 
-          WHERE EXECUTIONS_TOTAL > 0
-  )
-SELECT ROUND(elapsed_time_total/1000000/executions_total,2) AS elap_per_exec,
-  sql.sql_id,
-  sql.plan_hash_value,
-  PARSING_SCHEMA_NAME,
-  executions_total,
-  ROUND(elapsed_time_total/1000000,2) AS total_seconds,
-  sql_text,
-  BEGIN_INTERVAL_TIME, 
-  END_INTERVAL_TIME
-FROM snap
-JOIN SQL
-ON snap.snap_id=sql.snap_id
-JOIN dba_hist_sqltext
-ON sql.sql_id=dba_hist_sqltext.sql_id
-  )
-ORDER BY ELAP_PER_EXEC DESC) WHERE ROWNUM <= 5000]]></sql>
+                        snap_id,
+                        begin_interval_time,
+                        end_interval_time
+                    FROM
+                        dba_hist_snapshot
+                    WHERE
+                        end_interval_time > ( SYSDATE - :previous_days )
+                ),sql AS (
+                    SELECT /*+ MATERIALIZE */
+                        *
+                    FROM
+                        dba_hist_sqlstat
+                    WHERE
+                        executions_total > 0
+                ) SELECT
+                    round(elapsed_time_total / 1000000 / executions_total,2) AS elap_per_exec,
+                    sql.sql_id,
+                    sql.plan_hash_value,
+                    parsing_schema_name,
+                    executions_total,
+                    round(elapsed_time_total / 1000000,2) AS total_seconds,
+                    sql_text,
+                    begin_interval_time,
+                    end_interval_time
+                FROM
+                    snap
+                    JOIN
+                        sql
+                    ON
+                        snap.snap_id = sql.snap_id
+                    JOIN
+                        dba_hist_sqltext
+                    ON
+                        sql.sql_id = dba_hist_sqltext.sql_id
+            )
+        ORDER BY
+            elap_per_exec DESC
+    )
+WHERE
+    ROWNUM <= 5000
+    AND USERNAME NOT IN ('SYS','SYSTEM','DBSNMP','DII','AUDSYS')]]></sql>
 				<binds>
-					<bind id="PREVIOUS_HOURS">
-						<prompt><![CDATA[PREVIOUS_HOURS]]></prompt>
-						<tooltip><![CDATA[PREVIOUS_HOURS]]></tooltip>
-						<value><![CDATA[NULL_VALUE]]></value>
+					<bind id="previous_days">
+						<prompt><![CDATA[previous_days]]></prompt>
+						<tooltip><![CDATA[previous_days]]></tooltip>
+						<value><![CDATA[20]]></value>
 						<bracket><![CDATA[null]]></bracket>
 					</bind>
 				</binds>
@@ -2152,14 +2474,34 @@ ORDER BY ELAP_PER_EXEC DESC) WHERE ROWNUM <= 5000]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -2168,6 +2510,8 @@ ORDER BY ELAP_PER_EXEC DESC) WHERE ROWNUM <= 5000]]></sql>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT 
    output  
@@ -2321,14 +2665,34 @@ FROM
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -2337,6 +2701,8 @@ FROM
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[declare
 dbid number;
@@ -2481,6 +2847,29 @@ end;]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 				
 				
@@ -2495,14 +2884,11 @@ end;]]></sql>
 				
 				
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -2512,7 +2898,7 @@ end;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT
@@ -2535,7 +2921,7 @@ end;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT 
@@ -2645,14 +3031,34 @@ ORDER BY INST_NUM, DBA_HIST_SNAPSHOT.end_interval_time DESC,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -2662,7 +3068,7 @@ ORDER BY INST_NUM, DBA_HIST_SNAPSHOT.end_interval_time DESC,
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[WITH
@@ -2785,14 +3191,34 @@ SELECT p.plan_hash_value,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -2940,7 +3366,7 @@ END;]]></sql>
 						<bind id="statement_sql_id">
 							<prompt><![CDATA[statement_sql_id]]></prompt>
 							<tooltip><![CDATA[statement_sql_id]]></tooltip>
-							<value><![CDATA[dm46p0r894pss]]></value>
+							<value><![CDATA[2k55m9jcn5q37]]></value>
 							<bracket><![CDATA[null]]></bracket>
 						</bind>
 					</binds>
@@ -3010,19 +3436,39 @@ END;]]></sql>
 							
 							
 							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 				
 				
 				
 				
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			</data>
 						</header>
 						<footer enable="false" generatedate="false">
 							<data value="null" />
 						</footer>
-						<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-							<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-						</security>
 						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 					</pdf>
 			</display>
@@ -3035,7 +3481,7 @@ History:
 				<tooltip><![CDATA[]]></tooltip>
 				<drillclass><![CDATA[]]></drillclass>
 				<CustomValues>
-					<TYPE>horizontal</TYPE>
+					<TYPE><![CDATA[horizontal]]></TYPE>
 				</CustomValues>
 				<query>
 					<sql><![CDATA[WITH STMTS AS (
@@ -3114,14 +3560,34 @@ FROM STMTS LEFT OUTER JOIN DBA_HIST_SQLTEXT
 							
 							
 							
-							null																																																																																																																																																																																																																																																																																																																																																																																										</data>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											</data>
 						</header>
 						<footer enable="false" generatedate="false">
 							<data value="null" />
 						</footer>
-						<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-							<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-						</security>
 						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 					</pdf>
 			</display>
@@ -3132,34 +3598,34 @@ FROM STMTS LEFT OUTER JOIN DBA_HIST_SQLTEXT
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
-				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
-				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
-				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
-				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
-				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
-				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
-				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
-				<Y1AXIS_SCALE_MAXIMUM>80.0</Y1AXIS_SCALE_MAXIMUM>
-				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
-				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
-				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
-				<GRID_WIDTH>THINNER</GRID_WIDTH>
-				<TYPE>LINE_VERT_ABS</TYPE>
-				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
-				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
-				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
-				<GRID>true</GRID>
-				<STYLE>Default</STYLE>
-				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
-				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
-				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
-				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
-				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
-				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
-				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
-				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
-				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<PLOT_HGRID_WIDTH><![CDATA[THINNER]]></PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM><![CDATA[80.0]]></Y2AXIS_SCALE_MAXIMUM>
+				<Y1AXIS_SCALE_INCREMENT><![CDATA[10.0]]></Y1AXIS_SCALE_INCREMENT>
+				<Y1AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y1AXIS_LINE_WIDTH>
+				<Y1AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y1AXIS_TITLE_ALIGNMENT>
+				<LEGEND_LOCATION><![CDATA[AUTOMATIC]]></LEGEND_LOCATION>
+				<LEGEND_ALIGNMENT><![CDATA[LEFT]]></LEGEND_ALIGNMENT>
+				<XAXIS_LINE_WIDTH><![CDATA[THINNEST]]></XAXIS_LINE_WIDTH>
+				<Y1AXIS_SCALE_MAXIMUM><![CDATA[80.0]]></Y1AXIS_SCALE_MAXIMUM>
+				<XAXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></XAXIS_TITLE_ALIGNMENT>
+				<Y1AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></XAXIS_TICK_LABEL_ROTATE>
+				<GRID_WIDTH><![CDATA[THINNER]]></GRID_WIDTH>
+				<TYPE><![CDATA[LINE_VERT_ABS]]></TYPE>
+				<FOOTNOTE_ALIGNMENT><![CDATA[LEFT]]></FOOTNOTE_ALIGNMENT>
+				<XAXIS_TICK_LABEL_SKIP_MODE><![CDATA[AUTOMATIC]]></XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y2AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y2AXIS_LOGARITHMIC_BASE>
+				<GRID><![CDATA[true]]></GRID>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<TITLE_ALIGNMENT><![CDATA[LEFT]]></TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM><![CDATA[10.0]]></Y2AXIS_SCALE_MINIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y2AXIS_TICK_LABEL_ROTATE>
+				<Y2AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y1AXIS_TICK_LABEL_ROTATE>
+				<Y2AXIS_SCALE_INCREMENT><![CDATA[20.0]]></Y2AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y2AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH><![CDATA[THINNER]]></PLOT_VGRID_WIDTH>
+				<SUBTITLE_ALIGNMENT><![CDATA[LEFT]]></SUBTITLE_ALIGNMENT>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT * FROM (
@@ -3195,7 +3661,7 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 					<bind id="sql_id">
 						<prompt><![CDATA[sql_id]]></prompt>
 						<tooltip><![CDATA[sql_id]]></tooltip>
-						<value><![CDATA[0w3x6zaf0865s]]></value>
+						<value><![CDATA[08gcxd2g850vm]]></value>
 						<bracket><![CDATA[null]]></bracket>
 					</bind>
 				</binds>
@@ -3257,14 +3723,34 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																										</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																				</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -3278,7 +3764,7 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 				<tooltip><![CDATA[]]></tooltip>
 				<drillclass><![CDATA[]]></drillclass>
 				<CustomValues>
-					<TYPE>horizontal</TYPE>
+					<TYPE><![CDATA[horizontal]]></TYPE>
 				</CustomValues>
 				<query>
 					<sql><![CDATA[-- Child report:
@@ -3350,6 +3836,29 @@ SNAP_ID DESC, INSTANCE_NUMBER ASC;]]></sql>
 							
 							
 							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 						
 						
 						
@@ -3420,22 +3929,21 @@ SNAP_ID DESC, INSTANCE_NUMBER ASC;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			</data>
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				</data>
 						</header>
 						<footer enable="false" generatedate="false">
 							<data value="null" />
 						</footer>
-						<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-							<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-						</security>
 						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 					</pdf>
-<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="792de96c-0138-1000-803a-0a01571c53e9" toolbar="false" ><title>Generate AWR as Text</title><sql><![CDATA[]]></sql><script language="null"><![CDATA[]]></script><help></help></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="7936a819-0138-1000-804e-0a01571c53e9" toolbar="false" ><title>Generate AWR as HTML</title><sql><![CDATA[]]></sql><script language="null"><![CDATA[]]></script><help></help></item>			</display>
+<item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="792de96c-0138-1000-803a-0a01571c53e9" toolbar="false" ><title>Generate AWR as Text</title></item><item  reload="false"  reloadparent="false" removeFromParent="false" className="oracle.dbtools.raptor.report.addin.DrillReportAction" classArgs="7936a819-0138-1000-804e-0a01571c53e9" toolbar="false" ><title>Generate AWR as HTML</title></item>			</display>
 			<display id="7936a819-0138-1000-804e-0a01571c53e9" type="" style="plsql-dbms_output" enable="true">
 				<name><![CDATA[AWR Reports By Snap - Detail as HTML]]></name>
 				<description><![CDATA[]]></description>
 				<tooltip><![CDATA[]]></tooltip>
 				<drillclass><![CDATA[]]></drillclass>
+				<CustomValues>
+				</CustomValues>
 				<query>
 					<sql><![CDATA[SELECT 
    output  
@@ -3523,6 +4031,29 @@ FROM
 							
 							
 							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 						
 						
 						
@@ -3590,14 +4121,11 @@ FROM
 						
 						
 						
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 						</header>
 						<footer enable="false" generatedate="false">
 							<data value="null" />
 						</footer>
-						<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-							<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-						</security>
 						<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 					</pdf>
 			</display>
@@ -3608,34 +4136,34 @@ FROM
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
-				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
-				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
-				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
-				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
-				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
-				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
-				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
-				<Y1AXIS_SCALE_MAXIMUM>80.0</Y1AXIS_SCALE_MAXIMUM>
-				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
-				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
-				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
-				<GRID_WIDTH>THINNER</GRID_WIDTH>
-				<TYPE>LINE_VERT_ABS</TYPE>
-				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
-				<XAXIS_TICK_LABEL_SKIP_MODE>AUTOMATIC</XAXIS_TICK_LABEL_SKIP_MODE>
-				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
-				<GRID>true</GRID>
-				<STYLE>Default</STYLE>
-				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
-				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
-				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
-				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
-				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
-				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
-				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
-				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
-				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<PLOT_HGRID_WIDTH><![CDATA[THINNER]]></PLOT_HGRID_WIDTH>
+				<Y2AXIS_SCALE_MAXIMUM><![CDATA[80.0]]></Y2AXIS_SCALE_MAXIMUM>
+				<Y1AXIS_SCALE_INCREMENT><![CDATA[10.0]]></Y1AXIS_SCALE_INCREMENT>
+				<Y1AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y1AXIS_LINE_WIDTH>
+				<Y1AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y1AXIS_TITLE_ALIGNMENT>
+				<LEGEND_LOCATION><![CDATA[AUTOMATIC]]></LEGEND_LOCATION>
+				<LEGEND_ALIGNMENT><![CDATA[LEFT]]></LEGEND_ALIGNMENT>
+				<XAXIS_LINE_WIDTH><![CDATA[THINNEST]]></XAXIS_LINE_WIDTH>
+				<Y1AXIS_SCALE_MAXIMUM><![CDATA[80.0]]></Y1AXIS_SCALE_MAXIMUM>
+				<XAXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></XAXIS_TITLE_ALIGNMENT>
+				<Y1AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y1AXIS_LOGARITHMIC_BASE>
+				<XAXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></XAXIS_TICK_LABEL_ROTATE>
+				<GRID_WIDTH><![CDATA[THINNER]]></GRID_WIDTH>
+				<TYPE><![CDATA[LINE_VERT_ABS]]></TYPE>
+				<FOOTNOTE_ALIGNMENT><![CDATA[LEFT]]></FOOTNOTE_ALIGNMENT>
+				<XAXIS_TICK_LABEL_SKIP_MODE><![CDATA[AUTOMATIC]]></XAXIS_TICK_LABEL_SKIP_MODE>
+				<Y2AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y2AXIS_LOGARITHMIC_BASE>
+				<GRID><![CDATA[true]]></GRID>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<TITLE_ALIGNMENT><![CDATA[LEFT]]></TITLE_ALIGNMENT>
+				<Y2AXIS_SCALE_MINIMUM><![CDATA[10.0]]></Y2AXIS_SCALE_MINIMUM>
+				<Y2AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y2AXIS_TICK_LABEL_ROTATE>
+				<Y2AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y2AXIS_LINE_WIDTH>
+				<Y1AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y1AXIS_TICK_LABEL_ROTATE>
+				<Y2AXIS_SCALE_INCREMENT><![CDATA[20.0]]></Y2AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y2AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH><![CDATA[THINNER]]></PLOT_VGRID_WIDTH>
+				<SUBTITLE_ALIGNMENT><![CDATA[LEFT]]></SUBTITLE_ALIGNMENT>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT * FROM (
@@ -3715,6 +4243,29 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 						
 						
@@ -3733,14 +4284,11 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																														</data>
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -3755,7 +4303,7 @@ ORDER BY DBA_HIST_SNAPSHOT.end_interval_time DESC,
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Historical RowCounts From Stats History
@@ -3864,14 +4412,34 @@ ORDER BY 1,2,3;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -3883,7 +4451,7 @@ Excluded SYS use. Look up information on Fixed Object Stats if these objects nee
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT ATM.TABLE_OWNER,
@@ -4028,14 +4596,34 @@ ORDER BY 9 DESC]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4048,6 +4636,8 @@ Show information about default jobs configured for stats.
 Want to add info about any tables that have custom stats parameters that differ from the global defaults. ]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[DECLARE
   DBNAME V$DATABASE.NAME%TYPE;
@@ -4222,14 +4812,34 @@ END;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4239,7 +4849,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[with dependencies as (
@@ -4380,14 +4990,34 @@ WHERE REFERENCED_OWNER=T.OWNER
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																										</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4402,7 +5032,7 @@ WHERE REFERENCED_OWNER=T.OWNER
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT owner, segment_name, segment_type, partition_name, ROUND(bytes/1024/1024/1024,3) as GB
@@ -4416,7 +5046,7 @@ ORDER BY bytes desc]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT OWNER, TABLESPACE_NAME, ROUND(SUM(BYTES)/1024/1024/1024,3) as GB 
@@ -4546,18 +5176,38 @@ ORDER BY OWNER, TABLESPACE_NAME]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 				
 				
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4567,7 +5217,7 @@ ORDER BY OWNER, TABLESPACE_NAME]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT OWNER, COUNT(*) as SEGMENT_COUNT, ROUND(SUM(BYTES)/1024/1024/1024,3) as SEGMENT_TOTAL_GB 
@@ -4636,14 +5286,34 @@ ORDER BY 3 DESC]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4658,7 +5328,7 @@ ORDER BY 3 DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[WITH DiffParamsSet AS (select distinct name From gv$parameter group by name, value having count(*) =1)
@@ -4743,14 +5413,34 @@ order by name, inst_id]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4765,7 +5455,7 @@ order by name, inst_id]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT * 
@@ -4776,9 +5466,9 @@ FROM DBA_DATAPUMP_JOBS]]></sql>
 			<name><![CDATA[Largest Objects]]></name>
 			<description><![CDATA[Credit to Jeremy Schneider]]></description>
 			<tooltip><![CDATA[]]></tooltip>
-			<drillclass><![CDATA[null]]></drillclass>
+			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[with segment_rollup as (
@@ -4811,14 +5501,34 @@ where rank<=20]]></sql>
 					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
 					<header enable="false" generatedate="false">
 						<data>
-						null						</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4833,12 +5543,12 @@ where rank<=20]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<LEGEND>true</LEGEND>
-				<THREED>true</THREED>
-				<GRID>true</GRID>
-				<STYLE>Default</STYLE>
-				<GRADIENT>true</GRADIENT>
-				<TYPE>BAR_VERT_STACK</TYPE>
+				<LEGEND><![CDATA[true]]></LEGEND>
+				<THREED><![CDATA[true]]></THREED>
+				<GRID><![CDATA[true]]></GRID>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<GRADIENT><![CDATA[true]]></GRADIENT>
+				<TYPE><![CDATA[BAR_VERT_STACK]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
@@ -4972,14 +5682,34 @@ ORDER BY UPPER(COMPONENT), END_TIME]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -4989,12 +5719,12 @@ ORDER BY UPPER(COMPONENT), END_TIME]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<LEGEND>true</LEGEND>
-				<THREED>true</THREED>
-				<GRID>true</GRID>
-				<STYLE>Default</STYLE>
-				<GRADIENT>true</GRADIENT>
-				<TYPE>BAR_VERT_STACK</TYPE>
+				<LEGEND><![CDATA[true]]></LEGEND>
+				<THREED><![CDATA[true]]></THREED>
+				<GRID><![CDATA[true]]></GRID>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<GRADIENT><![CDATA[true]]></GRADIENT>
+				<TYPE><![CDATA[BAR_VERT_STACK]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
@@ -5130,14 +5860,34 @@ ORDER BY END_TIME, COMPONENT]]></sql>
 						
 						
 						
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -5147,12 +5897,12 @@ ORDER BY END_TIME, COMPONENT]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<LEGEND>true</LEGEND>
-				<THREED>true</THREED>
-				<GRID>true</GRID>
-				<STYLE>Default</STYLE>
-				<GRADIENT>true</GRADIENT>
-				<TYPE>BAR_VERT_STACK</TYPE>
+				<LEGEND><![CDATA[true]]></LEGEND>
+				<THREED><![CDATA[true]]></THREED>
+				<GRID><![CDATA[true]]></GRID>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<GRADIENT><![CDATA[true]]></GRADIENT>
+				<TYPE><![CDATA[BAR_VERT_STACK]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
@@ -5288,15 +6038,35 @@ ORDER BY END_TIME, COMPONENT]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -5306,12 +6076,12 @@ ORDER BY END_TIME, COMPONENT]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<LEGEND>true</LEGEND>
-				<THREED>true</THREED>
-				<GRID>true</GRID>
-				<STYLE>Default</STYLE>
-				<GRADIENT>true</GRADIENT>
-				<TYPE>BAR_VERT_STACK</TYPE>
+				<LEGEND><![CDATA[true]]></LEGEND>
+				<THREED><![CDATA[true]]></THREED>
+				<GRID><![CDATA[true]]></GRID>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<GRADIENT><![CDATA[true]]></GRADIENT>
+				<TYPE><![CDATA[BAR_VERT_STACK]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT END_TIME, COMPONENT, TARGET_SIZE 
@@ -5445,17 +6215,37 @@ ORDER BY END_TIME, COMPONENT]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 						
 						
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -5469,6 +6259,8 @@ ORDER BY END_TIME, COMPONENT]]></sql>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[-- David Mann
 -- http://ba6.us
@@ -5778,16 +6570,36 @@ END;]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -5797,7 +6609,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT NAME,
@@ -5814,7 +6626,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[WITH AllLogs AS (
@@ -5945,14 +6757,34 @@ ORDER BY GROUP#]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -5962,7 +6794,7 @@ ORDER BY GROUP#]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select * 
@@ -5975,7 +6807,7 @@ from v$log]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Redo Log Daily Summary
@@ -6003,36 +6835,76 @@ ORDER BY 1 DESC;]]></sql>
 						
 						
 						
-						null																								</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																		</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
 		<display id="38d2ad93-0138-1000-8004-0a01571ce2ee" type="" style="Table" enable="true">
-			<name><![CDATA[Redo Log - Hourly Summary]]></name>
+			<name><![CDATA[Redo Log Size/Count - Hourly Summary]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Redo Log Hourly Summary
-SELECT TO_DATE(TRUNC(COMPLETION_TIME,'HH'),'DD-MON-YYYY HH24:MI') Hour,
+SELECT TO_CHAR(TRUNC(COMPLETION_TIME,'HH'),'YYYY-MM-DD HH24:MI') Hour,
   THREAD# ,
   ROUND(SUM(BLOCKS*BLOCK_SIZE)/(1024*1024)) TOTAL_FILE_MB,
-  COUNT(*) NUM_LOGS
+  COUNT(*) NUM_LOGS,
+    MIN(SEQUENCE#),
+  MAX(SEQUENCE#)
 FROM v$archived_log
 GROUP BY TRUNC(COMPLETION_TIME,'HH'),
   THREAD#
 ORDER BY 1 DESC ;]]></sql>
 			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
 		</display>
 		<display id="61657029-0145-1000-8001-0a1a527846a9" type="" style="Table" enable="true">
 			<name><![CDATA[NOLOGGING Schema/Table/Index Summary]]></name>
@@ -6040,7 +6912,7 @@ ORDER BY 1 DESC ;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[WITH OwnerList AS (SELECT DISTINCT OWNER FROM DBA_TABLES),
@@ -6060,7 +6932,7 @@ FROM OWNERLIST]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select name,
@@ -6093,7 +6965,7 @@ https://docs.oracle.com/cd/B28359_01/server.111/b28320/dynviews_1093.htm#REFRN30
 					<tooltip><![CDATA[]]></tooltip>
 					<drillclass><![CDATA[]]></drillclass>
 					<CustomValues>
-						<TYPE>horizontal</TYPE>
+						<TYPE><![CDATA[horizontal]]></TYPE>
 					</CustomValues>
 					<query>
 						<sql><![CDATA[select TO_CHAR(TIMESTAMP,'YYYY-MM-DD HH24:MI') TIMESTAMP,
@@ -6157,14 +7029,34 @@ order by TIMESTAMP desc]]></sql>
 								
 								
 								
-								null																																																																																																																																																																																																																																																																																								</data>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 							</header>
 							<footer enable="false" generatedate="false">
 								<data value="null" />
 							</footer>
-							<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-								<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-							</security>
 							<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 						</pdf>
 				</display>
@@ -6174,7 +7066,7 @@ order by TIMESTAMP desc]]></sql>
 					<tooltip><![CDATA[]]></tooltip>
 					<drillclass><![CDATA[]]></drillclass>
 					<CustomValues>
-						<TYPE>horizontal</TYPE>
+						<TYPE><![CDATA[horizontal]]></TYPE>
 					</CustomValues>
 					<query>
 						<sql><![CDATA[select THREAD#, 
@@ -6236,14 +7128,34 @@ From gv$instance]]></sql>
 								
 								
 								
-								null																																																																																																																																																																																																																																																																																								</data>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																</data>
 							</header>
 							<footer enable="false" generatedate="false">
 								<data value="null" />
 							</footer>
-							<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-								<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-							</security>
 							<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 						</pdf>
 				</display>
@@ -6253,7 +7165,7 @@ From gv$instance]]></sql>
 					<tooltip><![CDATA[]]></tooltip>
 					<drillclass><![CDATA[]]></drillclass>
 					<CustomValues>
-						<TYPE>horizontal</TYPE>
+						<TYPE><![CDATA[horizontal]]></TYPE>
 					</CustomValues>
 					<query>
 						<sql><![CDATA[SELECT TO_CHAR(scn_to_timestamp((select current_scn from v$database)),'YYYY-MM-DD HH24:MI') AS CURRENT_SCN_TO_TIMESTAMP 
@@ -6301,14 +7213,34 @@ FROM DUAL]]></sql>
 								
 								
 								
-								null																																																																																																																																																																																																																																																																</data>
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								null																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 							</header>
 							<footer enable="false" generatedate="false">
 								<data value="null" />
 							</footer>
-							<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-								<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-							</security>
 							<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 						</pdf>
 				</display>
@@ -6320,7 +7252,7 @@ FROM DUAL]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Redo Log Daily Summary
@@ -6346,14 +7278,34 @@ ORDER BY 1 DESC;]]></sql>
 						
 						
 						
-						null																								</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																		</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -6362,6 +7314,8 @@ ORDER BY 1 DESC;]]></sql>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+			</CustomValues>
 			<query>
 				<sql><![CDATA[-- David Mann
 -- http://ba6.us
@@ -6441,12 +7395,14 @@ BEGIN
     INTO myMaxDay
     FROM v$archived_log
     WHERE trunc(FIRST_TIME) >= trunc(sysdate - 31)
+    and DEST_ID=1
   GROUP BY TO_CHAR(first_time,'YYYY-MM-DD');
 
   SELECT ROUND(MAX(ROUND(SUM(blocks*block_size)/1024/1024/1024)),1)
     INTO myMaxHour
     FROM v$archived_log
     WHERE trunc(FIRST_TIME) >= trunc(sysdate - 31)
+    and DEST_ID=1
   GROUP BY TO_CHAR(first_time,'YYYY-MM-DD HH24');
   
   SELECT NAME INTO myDBName FROM V$DATABASE;
@@ -6565,6 +7521,29 @@ END;]]></sql>
 						<data>
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 				
 						
 						
@@ -6677,14 +7656,92 @@ END;]]></sql>
 						
 				
 				
-				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										</data>
+				null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="7f93abe4-015d-1000-8001-0a1a52bf296b" type="" style="Table" enable="true">
+			<name><![CDATA[Daily Redo Summary]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE><![CDATA[horizontal]]></TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Archived Log History Summary
+SELECT THREAD#, 
+        TRUNC(FIRST_TIME) AS GroupDate, 
+        MIN(SEQUENCE#) AS FirstSeq, 
+        MAX(SEQUENCE#) AS LastSeq, 
+        MAX(SEQUENCE#)-MIN(SEQUENCE#) AS LogsPerDay, 
+        ROUND(SUM(BLOCKS*BLOCK_SIZE)/1024/1024) as mb
+FROM v$archived_log
+GROUP BY THREAD#, TRUNC(FIRST_TIME)
+ORDER BY 1,2 DESC;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						null																		</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="9fc0a92c-015e-1000-8002-0a0279d74fe2" type="" style="Table" enable="true">
+			<name><![CDATA[Redo Log Size/Count - Daily Summary]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE><![CDATA[horizontal]]></TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[-- Redo Log Daily Summary
+SELECT TO_CHAR(TRUNC(COMPLETION_TIME),'YYYY-MM-DD') Day,
+  THREAD# ,
+  ROUND(SUM(BLOCKS*BLOCK_SIZE)/(1024*1024)) TOTAL_FILE_MB,
+  COUNT(*) NUM_LOGS,
+    MIN(SEQUENCE#),
+  MAX(SEQUENCE#)
+FROM v$archived_log
+GROUP BY TRUNC(COMPLETION_TIME),
+  THREAD#
+ORDER BY 1 DESC ;]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						null						</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -6699,7 +7756,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select path,TOTAL_MB,FREE_MB from v$asm_disk]]></sql>
@@ -6711,7 +7768,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select name, type, total_mb, free_mb, required_mirror_free_mb, usable_file_mb from v$asm_diskgroup]]></sql>
@@ -6723,7 +7780,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select disk_number,mount_status,header_status,mode_status,state,path 
@@ -6737,7 +7794,7 @@ where path like '%rdisk%' or path like '%raw%']]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT *
@@ -6783,14 +7840,34 @@ ORDER BY 4 DESC]]></sql>
 						
 						
 						
-						null																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -6805,7 +7882,7 @@ ORDER BY 4 DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select * From APEX_040200.WWV_FLOW_FND_USER]]></sql>
@@ -6822,7 +7899,7 @@ ORDER BY 4 DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT input_bytes_display, 
@@ -6952,14 +8029,34 @@ ORDER BY 4 DESC]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -6969,7 +8066,7 @@ ORDER BY 4 DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT 'DUPLICATE/RESTORE THROUGHPUT',
@@ -7017,14 +8114,34 @@ ORDER BY 4 DESC]]></sql>
 						
 						
 						
-						null																																																																																																</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																										</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7035,7 +8152,7 @@ http://www.vitalsofttech.com/rman-backup-async-io-rate/]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT det.START_TIME, det.END_TIME,
@@ -7074,14 +8191,74 @@ http://www.vitalsofttech.com/rman-backup-async-io-rate/]]></description>
 						
 						
 						
-						null																																																																																																</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																										</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
+		</display>
+		<display id="14a015b7-015d-1000-8001-0a027f7ed11e" type="" style="Table" enable="true">
+			<name><![CDATA[Running RMAN Jobs]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE><![CDATA[horizontal]]></TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[SELECT input_bytes_display, 
+       output_bytes_display, 
+       status, 
+       time_taken_display, 
+       det.* 
+  FROM V$RMAN_BACKUP_JOB_DETAILS det 
+WHERE STATUS='RUNNING'
+ ORDER BY START_TIME DESC]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						null																								</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7096,7 +8273,7 @@ http://www.vitalsofttech.com/rman-backup-async-io-rate/]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Idle Session Lock Summary
@@ -7113,7 +8290,7 @@ order by last_call_et DESC;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT gvh.SID sessid,
@@ -7142,7 +8319,7 @@ AND gvh.inst_id = gvs.inst_id]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT gv$session.sid,
@@ -7169,7 +8346,7 @@ ORDER BY last_call_et DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select s1.username || '@' || s1.machine 
@@ -7193,7 +8370,7 @@ and l1.id2 = l2.id2]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select
@@ -7223,7 +8400,65 @@ from
   )
 start with grantee is null
 connect by grantee = prior granted_role]]></sql>
+				<binds>
+					<bind id="username">
+						<prompt><![CDATA[username]]></prompt>
+						<tooltip><![CDATA[username]]></tooltip>
+						<value><![CDATA[SYS]]></value>
+						<bracket><![CDATA[null]]></bracket>
+					</bind>
+				</binds>
 			</query>
+		</display>
+		<display id="22eaabd1-0156-1000-8001-0a1a52799c46" type="" style="Table" enable="true">
+			<name><![CDATA[SYS Users Defined in GB]]></name>
+			<description><![CDATA[]]></description>
+			<tooltip><![CDATA[]]></tooltip>
+			<drillclass><![CDATA[]]></drillclass>
+			<CustomValues>
+				<TYPE><![CDATA[horizontal]]></TYPE>
+			</CustomValues>
+			<query>
+				<sql><![CDATA[select * from gv$pwfile_users]]></sql>
+			</query>
+				<pdf version="VERSION_1_7" compression="CONTENT">
+					<docproperty title="null" author="null" subject="null" keywords="null" />
+					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
+					<column>
+						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
+						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
+						<blob blob="NONE" zip="false" />
+					</column>
+					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
+					<header enable="false" generatedate="false">
+						<data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																														</data>
+					</header>
+					<footer enable="false" generatedate="false">
+						<data value="null" />
+					</footer>
+					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
+				</pdf>
 		</display>
 	</folder>
 	<folder>
@@ -7236,7 +8471,7 @@ connect by grantee = prior granted_role]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT s.status, 
@@ -7293,14 +8528,34 @@ WHERE  status in ('KILLED')]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																						</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7310,7 +8565,7 @@ WHERE  status in ('KILLED')]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Here is the SQL to find Blocking locks in Oracle 9i r2 which is what we used in the procs above 
@@ -7373,14 +8628,34 @@ ORDER BY 2,5,6;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																						</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7390,7 +8665,7 @@ ORDER BY 2,5,6;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT
@@ -7425,7 +8700,7 @@ Note: ASH data can and will expire! ]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT user_id,
@@ -7477,14 +8752,34 @@ Note: ASH data can and will expire! ]]></description>
 						
 						
 						
-						null																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7494,7 +8789,7 @@ Note: ASH data can and will expire! ]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Temp space consumers > 1 GB in past 48 hours
@@ -7534,14 +8829,34 @@ group by sql_id order by sql_id;]]></sql>
 						
 						
 						
-						null																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7551,18 +8866,18 @@ group by sql_id order by sql_id;]]></sql>
 		<tooltip><![CDATA[Session Info]]></tooltip>
 		<description><![CDATA[ ]]></description>
 			<display id="a74556d1-0147-1000-8001-0a1a52785937" type="" style="Table" enable="true">
-			<name><![CDATA[Idle Session Detail ( < 1 week )]]></name>
+			<name><![CDATA[Idle Session Detail ( < 1 Day )]]></name>
 			<description><![CDATA[]]></description>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select sid, serial#, username, osuser, machine, module, LAST_CALL_ET, ROUND(LAST_CALL_ET/3600/24,2) AS DAYS,   (SELECT DISTINCT SQL_TEXT FROM V$SQL WHERE SQL_ID=PREV_SQL_ID) as SQL_TEXT,
 'alter system kill session '''||sid||','||serial#||''';' as sql
 from v$session
-where last_call_et > (7*24*3600)
+where last_call_et > (1*24*3600)
 and STATUS='INACTIVE'
 and USERNAME NOT IN ('SYS','SYSTEM')
 ORDER BY LAST_CALL_ET]]></sql>
@@ -7639,14 +8954,34 @@ ORDER BY LAST_CALL_ET]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																				</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7656,7 +8991,7 @@ ORDER BY LAST_CALL_ET]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT INST_ID, USERNAME, DAYS_INACTIVE, COUNT(*) SESSION_COUNT 
@@ -7729,14 +9064,34 @@ FROM (select INST_ID, USERNAME, osuser, machine, last_call_et, ROUND(last_call_e
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																								</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																		</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7746,82 +9101,82 @@ FROM (select INST_ID, USERNAME, osuser, machine, last_call_et, ROUND(last_call_e
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<Y1AXIS_TITLE_TEXT>Inactive Session Count</Y1AXIS_TITLE_TEXT>
-				<PLOT_DATATIPS_TEXT>true</PLOT_DATATIPS_TEXT>
-				<Y2AXIS_SCALE_MAXIMUM>80.0</Y2AXIS_SCALE_MAXIMUM>
-				<Y1AXIS_LOGARITHMIC_SCALE>false</Y1AXIS_LOGARITHMIC_SCALE>
-				<LEGEND_LOCATION>AUTOMATIC</LEGEND_LOCATION>
-				<Y1AXIS_TITLE_FONT.POSTURE>false</Y1AXIS_TITLE_FONT.POSTURE>
-				<LEGEND>false</LEGEND>
-				<DATA_MAP_COLUMNS>\,"DAYS_INACTIVE"</DATA_MAP_COLUMNS>
-				<TITLE_FONT.POSTURE>false</TITLE_FONT.POSTURE>
-				<Y1AXIS_SCALE_MAXIMUM>60.0</Y1AXIS_SCALE_MAXIMUM>
-				<XAXIS_TICK_LABEL_ROTATE>HORIZONTAL</XAXIS_TICK_LABEL_ROTATE>
-				<XAXIS_TITLE_FONT.WEIGHT>true</XAXIS_TITLE_FONT.WEIGHT>
-				<TYPE>BAR_VERT_STACK</TYPE>
-				<DATA_MAP_COUNT>1</DATA_MAP_COUNT>
-				<STYLE>Default</STYLE>
-				<TITLE_ALIGNMENT>LEFT</TITLE_ALIGNMENT>
-				<Y1AXIS_TITLE_FONT.SIZE>12</Y1AXIS_TITLE_FONT.SIZE>
-				<Y1AXIS_TITLE_FONT.NAME>SansSerif</Y1AXIS_TITLE_FONT.NAME>
-				<XAXIS_SCALE_MAXIMUM>70.0</XAXIS_SCALE_MAXIMUM>
-				<TITLE_TEXT>Idle Session Summary</TITLE_TEXT>
-				<Y2AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y2AXIS_TICK_LABEL_ROTATE>
-				<PLOT_HGRID>true</PLOT_HGRID>
-				<PLOT_DATATIPS_VALUE>true</PLOT_DATATIPS_VALUE>
-				<XAXIS_TITLE_FONT.COLOR>-9144422</XAXIS_TITLE_FONT.COLOR>
-				<Y2AXIS_LINE_WIDTH>THINNEST</Y2AXIS_LINE_WIDTH>
-				<TITLE_FONT.UNDERLINE>false</TITLE_FONT.UNDERLINE>
-				<Y1AXIS_TICK_LABEL_ROTATE>HORIZONTAL</Y1AXIS_TICK_LABEL_ROTATE>
-				<TITLE_FONT.NAME>SansSerif</TITLE_FONT.NAME>
-				<XAXIS_TITLE_FONT.POSTURE>false</XAXIS_TITLE_FONT.POSTURE>
-				<XAXIS_TITLE_TEXT>Days Inactive</XAXIS_TITLE_TEXT>
-				<PLOT_HGRID_WIDTH>THINNER</PLOT_HGRID_WIDTH>
-				<TITLE_FONT.COLOR>-12565927</TITLE_FONT.COLOR>
-				<XAXIS_TICK_LABEL_AUTO_ROTATE>true</XAXIS_TICK_LABEL_AUTO_ROTATE>
-				<Y1AXIS_SCALE_INCREMENT>10.0</Y1AXIS_SCALE_INCREMENT>
-				<PLOT_DATATIPS_CUMULATIVE_VALUE>false</PLOT_DATATIPS_CUMULATIVE_VALUE>
-				<TITLE_FONT.SIZE>18</TITLE_FONT.SIZE>
-				<Y1AXIS_LINE_WIDTH>THINNEST</Y1AXIS_LINE_WIDTH>
-				<PLOT_SERIES_OPTIONS_FITLINE_TYPE>\,LINEAR,NONE,NONE,NONE,NONE</PLOT_SERIES_OPTIONS_FITLINE_TYPE>
-				<Y1AXIS_TITLE_ALIGNMENT>CENTER</Y1AXIS_TITLE_ALIGNMENT>
-				<LEGEND_ALIGNMENT>LEFT</LEGEND_ALIGNMENT>
-				<GRADIENT>false</GRADIENT>
-				<PLOT_DATALABELS_SLICE_POSITION>OUTSIDE_SLICE</PLOT_DATALABELS_SLICE_POSITION>
-				<XAXIS_LINE_WIDTH>THINNEST</XAXIS_LINE_WIDTH>
-				<XAXIS_TITLE_ALIGNMENT>CENTER</XAXIS_TITLE_ALIGNMENT>
-				<XAXIS_LOGARITHMIC_BASE>BASE_10</XAXIS_LOGARITHMIC_BASE>
-				<PLOT_DATALABELS>true</PLOT_DATALABELS>
-				<Y1AXIS_LOGARITHMIC_BASE>BASE_10</Y1AXIS_LOGARITHMIC_BASE>
-				<GRID_WIDTH>THINNER</GRID_WIDTH>
-				<PLOT_DATALABELS_BAR_POSITION>ABOVE</PLOT_DATALABELS_BAR_POSITION>
-				<FOOTNOTE_ALIGNMENT>LEFT</FOOTNOTE_ALIGNMENT>
-				<XAXIS_TICK_LABEL_SKIP_MODE>MANUAL</XAXIS_TICK_LABEL_SKIP_MODE>
-				<DATA_MAP_COLNAMES>\,"DAYS_INACTIVE","SESSION_COUNT"</DATA_MAP_COLNAMES>
-				<PLOT_RGRID_WIDTH>THINNER</PLOT_RGRID_WIDTH>
-				<DATA_MAP_SERIES>\,"DAYS_INACTIVE"</DATA_MAP_SERIES>
-				<Y2AXIS_LOGARITHMIC_BASE>BASE_10</Y2AXIS_LOGARITHMIC_BASE>
-				<GRID>false</GRID>
-				<TITLE_FONT.WEIGHT>true</TITLE_FONT.WEIGHT>
-				<XAXIS_SCALE_INCREMENT>10.0</XAXIS_SCALE_INCREMENT>
-				<XAXIS_TITLE_FONT.UNDERLINE>false</XAXIS_TITLE_FONT.UNDERLINE>
-				<PLOT_DATALABELS_SLICE_TYPE>PERCENT_VALUE</PLOT_DATALABELS_SLICE_TYPE>
-				<Y1AXIS_SCALE_MINIMUM_AUTOMATIC>true</Y1AXIS_SCALE_MINIMUM_AUTOMATIC>
-				<Y2AXIS_SCALE_MINIMUM>10.0</Y2AXIS_SCALE_MINIMUM>
-				<XAXIS_TITLE>true</XAXIS_TITLE>
-				<THREED>false</THREED>
-				<Y1AXIS_TITLE_FONT.COLOR>-9144422</Y1AXIS_TITLE_FONT.COLOR>
-				<DATA_MAP_VALUES>\,"SESSION_COUNT"</DATA_MAP_VALUES>
-				<XAXIS_TITLE_FONT.NAME>SansSerif</XAXIS_TITLE_FONT.NAME>
-				<Y1AXIS_TITLE_FONT.WEIGHT>true</Y1AXIS_TITLE_FONT.WEIGHT>
-				<TITLE>true</TITLE>
-				<XAXIS_TITLE_FONT.SIZE>12</XAXIS_TITLE_FONT.SIZE>
-				<Y1AXIS_TITLE>true</Y1AXIS_TITLE>
-				<Y2AXIS_SCALE_INCREMENT>20.0</Y2AXIS_SCALE_INCREMENT>
-				<Y2AXIS_TITLE_ALIGNMENT>CENTER</Y2AXIS_TITLE_ALIGNMENT>
-				<PLOT_VGRID_WIDTH>THINNER</PLOT_VGRID_WIDTH>
-				<Y1AXIS_TITLE_FONT.UNDERLINE>false</Y1AXIS_TITLE_FONT.UNDERLINE>
-				<SUBTITLE_ALIGNMENT>LEFT</SUBTITLE_ALIGNMENT>
+				<Y1AXIS_TITLE_TEXT><![CDATA[Inactive Session Count]]></Y1AXIS_TITLE_TEXT>
+				<PLOT_DATATIPS_TEXT><![CDATA[true]]></PLOT_DATATIPS_TEXT>
+				<Y2AXIS_SCALE_MAXIMUM><![CDATA[80.0]]></Y2AXIS_SCALE_MAXIMUM>
+				<Y1AXIS_LOGARITHMIC_SCALE><![CDATA[false]]></Y1AXIS_LOGARITHMIC_SCALE>
+				<LEGEND_LOCATION><![CDATA[AUTOMATIC]]></LEGEND_LOCATION>
+				<Y1AXIS_TITLE_FONT.POSTURE><![CDATA[false]]></Y1AXIS_TITLE_FONT.POSTURE>
+				<LEGEND><![CDATA[false]]></LEGEND>
+				<DATA_MAP_COLUMNS><![CDATA[\,"DAYS_INACTIVE"]]></DATA_MAP_COLUMNS>
+				<TITLE_FONT.POSTURE><![CDATA[false]]></TITLE_FONT.POSTURE>
+				<Y1AXIS_SCALE_MAXIMUM><![CDATA[60.0]]></Y1AXIS_SCALE_MAXIMUM>
+				<XAXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></XAXIS_TICK_LABEL_ROTATE>
+				<XAXIS_TITLE_FONT.WEIGHT><![CDATA[true]]></XAXIS_TITLE_FONT.WEIGHT>
+				<TYPE><![CDATA[BAR_VERT_STACK]]></TYPE>
+				<DATA_MAP_COUNT><![CDATA[1]]></DATA_MAP_COUNT>
+				<STYLE><![CDATA[Default]]></STYLE>
+				<TITLE_ALIGNMENT><![CDATA[LEFT]]></TITLE_ALIGNMENT>
+				<Y1AXIS_TITLE_FONT.SIZE><![CDATA[12]]></Y1AXIS_TITLE_FONT.SIZE>
+				<Y1AXIS_TITLE_FONT.NAME><![CDATA[SansSerif]]></Y1AXIS_TITLE_FONT.NAME>
+				<XAXIS_SCALE_MAXIMUM><![CDATA[70.0]]></XAXIS_SCALE_MAXIMUM>
+				<TITLE_TEXT><![CDATA[Idle Session Summary]]></TITLE_TEXT>
+				<Y2AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y2AXIS_TICK_LABEL_ROTATE>
+				<PLOT_HGRID><![CDATA[true]]></PLOT_HGRID>
+				<PLOT_DATATIPS_VALUE><![CDATA[true]]></PLOT_DATATIPS_VALUE>
+				<XAXIS_TITLE_FONT.COLOR><![CDATA[-9144422]]></XAXIS_TITLE_FONT.COLOR>
+				<Y2AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y2AXIS_LINE_WIDTH>
+				<TITLE_FONT.UNDERLINE><![CDATA[false]]></TITLE_FONT.UNDERLINE>
+				<Y1AXIS_TICK_LABEL_ROTATE><![CDATA[HORIZONTAL]]></Y1AXIS_TICK_LABEL_ROTATE>
+				<TITLE_FONT.NAME><![CDATA[SansSerif]]></TITLE_FONT.NAME>
+				<XAXIS_TITLE_FONT.POSTURE><![CDATA[false]]></XAXIS_TITLE_FONT.POSTURE>
+				<XAXIS_TITLE_TEXT><![CDATA[Days Inactive]]></XAXIS_TITLE_TEXT>
+				<PLOT_HGRID_WIDTH><![CDATA[THINNER]]></PLOT_HGRID_WIDTH>
+				<TITLE_FONT.COLOR><![CDATA[-12565927]]></TITLE_FONT.COLOR>
+				<XAXIS_TICK_LABEL_AUTO_ROTATE><![CDATA[true]]></XAXIS_TICK_LABEL_AUTO_ROTATE>
+				<Y1AXIS_SCALE_INCREMENT><![CDATA[10.0]]></Y1AXIS_SCALE_INCREMENT>
+				<PLOT_DATATIPS_CUMULATIVE_VALUE><![CDATA[false]]></PLOT_DATATIPS_CUMULATIVE_VALUE>
+				<TITLE_FONT.SIZE><![CDATA[18]]></TITLE_FONT.SIZE>
+				<Y1AXIS_LINE_WIDTH><![CDATA[THINNEST]]></Y1AXIS_LINE_WIDTH>
+				<PLOT_SERIES_OPTIONS_FITLINE_TYPE><![CDATA[\,LINEAR,NONE,NONE,NONE,NONE]]></PLOT_SERIES_OPTIONS_FITLINE_TYPE>
+				<Y1AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y1AXIS_TITLE_ALIGNMENT>
+				<LEGEND_ALIGNMENT><![CDATA[LEFT]]></LEGEND_ALIGNMENT>
+				<GRADIENT><![CDATA[false]]></GRADIENT>
+				<PLOT_DATALABELS_SLICE_POSITION><![CDATA[OUTSIDE_SLICE]]></PLOT_DATALABELS_SLICE_POSITION>
+				<XAXIS_LINE_WIDTH><![CDATA[THINNEST]]></XAXIS_LINE_WIDTH>
+				<XAXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></XAXIS_TITLE_ALIGNMENT>
+				<XAXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></XAXIS_LOGARITHMIC_BASE>
+				<PLOT_DATALABELS><![CDATA[true]]></PLOT_DATALABELS>
+				<Y1AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y1AXIS_LOGARITHMIC_BASE>
+				<GRID_WIDTH><![CDATA[THINNER]]></GRID_WIDTH>
+				<PLOT_DATALABELS_BAR_POSITION><![CDATA[ABOVE]]></PLOT_DATALABELS_BAR_POSITION>
+				<FOOTNOTE_ALIGNMENT><![CDATA[LEFT]]></FOOTNOTE_ALIGNMENT>
+				<XAXIS_TICK_LABEL_SKIP_MODE><![CDATA[MANUAL]]></XAXIS_TICK_LABEL_SKIP_MODE>
+				<DATA_MAP_COLNAMES><![CDATA[\,"DAYS_INACTIVE","SESSION_COUNT"]]></DATA_MAP_COLNAMES>
+				<PLOT_RGRID_WIDTH><![CDATA[THINNER]]></PLOT_RGRID_WIDTH>
+				<DATA_MAP_SERIES><![CDATA[\,"DAYS_INACTIVE"]]></DATA_MAP_SERIES>
+				<Y2AXIS_LOGARITHMIC_BASE><![CDATA[BASE_10]]></Y2AXIS_LOGARITHMIC_BASE>
+				<GRID><![CDATA[false]]></GRID>
+				<TITLE_FONT.WEIGHT><![CDATA[true]]></TITLE_FONT.WEIGHT>
+				<XAXIS_SCALE_INCREMENT><![CDATA[10.0]]></XAXIS_SCALE_INCREMENT>
+				<XAXIS_TITLE_FONT.UNDERLINE><![CDATA[false]]></XAXIS_TITLE_FONT.UNDERLINE>
+				<PLOT_DATALABELS_SLICE_TYPE><![CDATA[PERCENT_VALUE]]></PLOT_DATALABELS_SLICE_TYPE>
+				<Y1AXIS_SCALE_MINIMUM_AUTOMATIC><![CDATA[true]]></Y1AXIS_SCALE_MINIMUM_AUTOMATIC>
+				<Y2AXIS_SCALE_MINIMUM><![CDATA[10.0]]></Y2AXIS_SCALE_MINIMUM>
+				<XAXIS_TITLE><![CDATA[true]]></XAXIS_TITLE>
+				<THREED><![CDATA[false]]></THREED>
+				<Y1AXIS_TITLE_FONT.COLOR><![CDATA[-9144422]]></Y1AXIS_TITLE_FONT.COLOR>
+				<DATA_MAP_VALUES><![CDATA[\,"SESSION_COUNT"]]></DATA_MAP_VALUES>
+				<XAXIS_TITLE_FONT.NAME><![CDATA[SansSerif]]></XAXIS_TITLE_FONT.NAME>
+				<Y1AXIS_TITLE_FONT.WEIGHT><![CDATA[true]]></Y1AXIS_TITLE_FONT.WEIGHT>
+				<TITLE><![CDATA[true]]></TITLE>
+				<XAXIS_TITLE_FONT.SIZE><![CDATA[12]]></XAXIS_TITLE_FONT.SIZE>
+				<Y1AXIS_TITLE><![CDATA[true]]></Y1AXIS_TITLE>
+				<Y2AXIS_SCALE_INCREMENT><![CDATA[20.0]]></Y2AXIS_SCALE_INCREMENT>
+				<Y2AXIS_TITLE_ALIGNMENT><![CDATA[CENTER]]></Y2AXIS_TITLE_ALIGNMENT>
+				<PLOT_VGRID_WIDTH><![CDATA[THINNER]]></PLOT_VGRID_WIDTH>
+				<Y1AXIS_TITLE_FONT.UNDERLINE><![CDATA[false]]></Y1AXIS_TITLE_FONT.UNDERLINE>
+				<SUBTITLE_ALIGNMENT><![CDATA[LEFT]]></SUBTITLE_ALIGNMENT>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT --USERNAME, 
@@ -7908,14 +9263,34 @@ ORDER BY DAYS_INACTIVE]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -7925,7 +9300,7 @@ ORDER BY DAYS_INACTIVE]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select s.username, s.sid, s.serial#, s.logon_time, s.last_call_et, p.spid as UNIX_PROCESS_ID, 'kill -9 '||p.SPID as UnixKillStmt
@@ -7941,7 +9316,7 @@ ORDER BY S.LAST_CALL_ET DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- What SQL Statements/Sessions are using the most TEMP on a RAC Database? 
@@ -8084,14 +9459,34 @@ ORDER BY ROUND(((u.blocks*p.value)/1024/1024),2) DESC;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="true" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8101,7 +9496,7 @@ ORDER BY ROUND(((u.blocks*p.value)/1024/1024),2) DESC;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Min, Max, Low Thresh, Upper Thresh, Value
@@ -8178,14 +9573,34 @@ group by inst_id order by inst_id]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																																																																																																																																																														</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8195,7 +9610,7 @@ group by inst_id order by inst_id]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[select inst_id, sid, serial#, username, osuser, machine, module, LAST_CALL_ET, ROUND(LAST_CALL_ET/3600/24,2) AS DAYS,   (SELECT DISTINCT SQL_TEXT FROM V$SQL WHERE SQL_ID=PREV_SQL_ID) as SQL_TEXT,
@@ -8203,7 +9618,7 @@ group by inst_id order by inst_id]]></sql>
 from gv$session
 where STATUS='INACTIVE'
 and USERNAME NOT IN ('SYS','SYSTEM')
-ORDER BY LAST_CALL_ET DESC]]></sql>
+ORDER BY LAST_CALL_ET ASC]]></sql>
 			</query>
 				<pdf version="VERSION_1_7" compression="CONTENT">
 					<docproperty title="null" author="null" subject="null" keywords="null" />
@@ -8246,14 +9661,34 @@ ORDER BY LAST_CALL_ET DESC]]></sql>
 						
 						
 						
-						null																																																																																																																																																																																										</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																																				</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8263,7 +9698,7 @@ ORDER BY LAST_CALL_ET DESC]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- PGA Memory in Use for Sessions
@@ -8319,14 +9754,34 @@ ORDER BY PGA_USED_MEM DESC;]]></sql>
 						
 						
 						
-						null																																																																																																																																																																														</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						null																																																																																																																																																																																																																																																																																																																								</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8336,7 +9791,7 @@ ORDER BY PGA_USED_MEM DESC;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- PGA Memory in Use for Sessions
@@ -8390,355 +9845,34 @@ ORDER BY s.INST_ID;]]></sql>
 						
 						
 						
-				null																																																																																																																																																																																		</data>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+				null																																																																																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
-					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
-				</pdf>
-		</display>
-	</folder>
-	<folder>
-		<name><![CDATA[_examples]]></name>
-		<tooltip><![CDATA[_examples]]></tooltip>
-		<description><![CDATA[ ]]></description>
-			<display id="f134edab-0148-1000-8003-0a1a52788e14" type="" style="plsql-dbms_output" enable="true">
-			<name><![CDATA[PLSQL/DBMS Output - Capabilities]]></name>
-			<description><![CDATA[What are the capabilities of the built-in rendering engine? ]]></description>
-			<tooltip><![CDATA[]]></tooltip>
-			<drillclass><![CDATA[]]></drillclass>
-			<query>
-				<sql><![CDATA[BEGIN
-DBMS_OUTPUT.PUT_LINE('<a NAME="TOP">');
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>Header Test H1</H1>');
-DBMS_OUTPUT.PUT_LINE('<H2>Header Test H2</H2>');
-DBMS_OUTPUT.PUT_LINE('<H3>Header Test H3</H3>');
-
-
-
-DBMS_OUTPUT.PUT_LINE('<H1>Inline CSS Test 1</H1>');
-DBMS_OUTPUT.PUT_LINE('<P style="color: red">This is red text</P>');
-
-DBMS_OUTPUT.PUT_LINE('<H1>Inline CSS Test 2</H1>');
-DBMS_OUTPUT.PUT_LINE('<P style="color: blue; font-size : 18pt; font-family: verdana;">This is blue Verdana family text at 18pt</P>');
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>Table Test</H1>');
-DBMS_OUTPUT.PUT_LINE('<TABLE BORDER=1>');
-DBMS_OUTPUT.PUT_LINE('<TR><TD>Row 1 Col A</TD><TD>Row 1 Col B</TD></TR>');
-DBMS_OUTPUT.PUT_LINE('<TR><TD>Row 2 Col A</TD><TD>Row 2 Col B</TD></TR>');
-DBMS_OUTPUT.PUT_LINE('<TR><TD>Row 3 Col A</TD><TD>Row 3 Col B</TD></TR>');
-DBMS_OUTPUT.PUT_LINE('</TABLE>');
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>JPEG Test</H1>');
-DBMS_OUTPUT.PUT_LINE('<IMG SRC="http://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg">');
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>PNG Test</H1>');
-DBMS_OUTPUT.PUT_LINE('<img src="http://www.schaik.com/pngsuite/basi3p02.png">');
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>List Test</H1>');
-DBMS_OUTPUT.PUT_LINE('<UL>');
-DBMS_OUTPUT.PUT_LINE('<LI>List Item 1');
-DBMS_OUTPUT.PUT_LINE('<LI>List Item 2');
-DBMS_OUTPUT.PUT_LINE('<LI>List Item 2');
-DBMS_OUTPUT.PUT_LINE('</UL>');
-
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>Anchor Test</H1>');
-DBMS_OUTPUT.PUT_LINE('<a href="#TOP">Go To Top</a>');
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1>PRE Test</H1>');
-DBMS_OUTPUT.PUT_LINE('<PRE>This is preformatted text</PRE>');
-
-
-
-DBMS_OUTPUT.PUT_LINE('<HR>');
-DBMS_OUTPUT.PUT_LINE('<H1></H1>');
-DBMS_OUTPUT.PUT_LINE('');
-
-
-END;]]></sql>
-			</query>
-				<pdf version="VERSION_1_7" compression="CONTENT">
-					<docproperty title="null" author="null" subject="null" keywords="null" />
-					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
-					<column>
-						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
-						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
-						<blob blob="NONE" zip="false" />
-					</column>
-					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
-					<header enable="false" generatedate="false">
-						<data>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						null																																																																																																																																																																																																																																																																																																																		</data>
-					</header>
-					<footer enable="false" generatedate="false">
-						<data value="null" />
-					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
-					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
-				</pdf>
-		</display>
-		<display id="f161bfac-0148-1000-8004-0a1a52788e14" type="" style="plsql-dbms_output" enable="true">
-			<name><![CDATA[PL/SQL DBMS Output - Parameter Passing Example]]></name>
-			<description><![CDATA[]]></description>
-			<tooltip><![CDATA[]]></tooltip>
-			<drillclass><![CDATA[]]></drillclass>
-			<query>
-				<sql><![CDATA[DECLARE
-
-  myChar VARCHAR2(15) := ''||:CharString;
-  myNum NUMBER := 0+:myNumber;
-  
-BEGIN
-  
-  DBMS_OUTPUT.PUT_LINE('<P>Character String = "'||myChar||'"</P>');
-  DBMS_OUTPUT.PUT_LINE('<P>Number String = "'||myNum||'"</P>');
-  
-
-END;]]></sql>
-				<binds>
-					<bind id="CharString">
-						<prompt><![CDATA[CharString]]></prompt>
-						<tooltip><![CDATA[CharString]]></tooltip>
-						<value><![CDATA[jonxie]]></value>
-						<bracket><![CDATA[null]]></bracket>
-					</bind>
-					<bind id="myNumber">
-						<prompt><![CDATA[myNumber]]></prompt>
-						<tooltip><![CDATA[myNumber]]></tooltip>
-						<value><![CDATA[12345]]></value>
-						<bracket><![CDATA[null]]></bracket>
-					</bind>
-				</binds>
-			</query>
-				<pdf version="VERSION_1_7" compression="CONTENT">
-					<docproperty title="null" author="null" subject="null" keywords="null" />
-					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
-					<column>
-						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
-						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
-						<blob blob="NONE" zip="false" />
-					</column>
-					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
-					<header enable="false" generatedate="false">
-						<data>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						null																																																																																																																																																																																																																																																																																																																		</data>
-					</header>
-					<footer enable="false" generatedate="false">
-						<data value="null" />
-					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
-					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
-				</pdf>
-		</display>
-		<display id="9ecdc141-0148-1000-8019-0a1a52788fb4" type="" style="plsql-dbms_output" enable="true">
-			<name><![CDATA[Hello World with Bind Test]]></name>
-			<description><![CDATA[]]></description>
-			<tooltip><![CDATA[]]></tooltip>
-			<drillclass><![CDATA[]]></drillclass>
-			<query>
-				<sql><![CDATA[BEGIN
-DBMS_OUTPUT.PUT_LINE(:bind1);
---DBMS_OUTPUT.PUT_LINE('Hello world! '||:bind1);
-END;]]></sql>
-				<binds>
-					<bind id="bind1">
-						<prompt><![CDATA[bind1]]></prompt>
-						<tooltip><![CDATA[bind1]]></tooltip>
-						<value><![CDATA[test]]></value>
-						<bracket><![CDATA[null]]></bracket>
-					</bind>
-				</binds>
-			</query>
-				<pdf version="VERSION_1_7" compression="CONTENT">
-					<docproperty title="null" author="null" subject="null" keywords="null" />
-					<cell toppadding="2" bottompadding="2" leftpadding="2" rightpadding="2" horizontalalign="LEFT" verticalalign="TOP" wrap="true" />
-					<column>
-						<heading font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="FIRST_PAGE" />
-						<footing font="null" size="10" style="NORMAL" color="-16777216" rowshading="-1" labeling="NONE" />
-						<blob blob="NONE" zip="false" />
-					</column>
-					<table font="null" size="10" style="NORMAL" color="-16777216" userowshading="false" oddrowshading="-1" evenrowshading="-1" showborders="true" spacingbefore="12" spacingafter="12" horizontalalign="LEFT" />
-					<header enable="false" generatedate="false">
-						<data>
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-				
-				
-				
-				
-				
-				null																																																																																																																																																																																																																																																																																																																														</data>
-					</header>
-					<footer enable="false" generatedate="false">
-						<data value="null" />
-					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8753,7 +9887,7 @@ END;]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- DB Size Allocated History
@@ -8808,6 +9942,29 @@ ORDER BY              MGMT_METRICS_1DAY.ROLLUP_TIMESTAMP ASC, MGMT_METRICS_1DAY.
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					
 					
 					
@@ -8824,14 +9981,11 @@ ORDER BY              MGMT_METRICS_1DAY.ROLLUP_TIMESTAMP ASC, MGMT_METRICS_1DAY.
 					
 					
 					
-					null																																																																																																																																																																															</data>
+					null																																																																																																																																																																																																																																																																																																																									</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8841,7 +9995,7 @@ ORDER BY              MGMT_METRICS_1DAY.ROLLUP_TIMESTAMP ASC, MGMT_METRICS_1DAY.
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>BAR_VERT_CLUST</TYPE>
+				<TYPE><![CDATA[BAR_VERT_CLUST]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- DB Size Allocated History
@@ -8893,6 +10047,29 @@ ORDER BY              MGMT_METRICS_1DAY.ROLLUP_TIMESTAMP]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					
 					
 					
@@ -8909,14 +10086,11 @@ ORDER BY              MGMT_METRICS_1DAY.ROLLUP_TIMESTAMP]]></sql>
 					
 					
 					
-					null																																																																																																																																																																															</data>
+					null																																																																																																																																																																																																																																																																																																																									</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -8929,7 +10103,7 @@ Note: Multiple nulls means agent is probably not online or configured correctly.
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[SELECT target_name,
@@ -8993,6 +10167,29 @@ order by 1,2]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					
 					
 					
@@ -9003,14 +10200,11 @@ order by 1,2]]></sql>
 					
 					
 					
-					null																																																																																																																																																	</data>
+					null																																																																																																																																																																																																																																																																																											</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
@@ -9020,7 +10214,7 @@ order by 1,2]]></sql>
 			<tooltip><![CDATA[]]></tooltip>
 			<drillclass><![CDATA[]]></drillclass>
 			<CustomValues>
-				<TYPE>horizontal</TYPE>
+				<TYPE><![CDATA[horizontal]]></TYPE>
 			</CustomValues>
 			<query>
 				<sql><![CDATA[-- Monitored ASM targets with diskgroups and configured amount of space
@@ -9060,6 +10254,29 @@ ORDER BY TARGET_NAME, TARGET_TYPE, KEY_VALUE, METRIC_COLUMN;]]></sql>
 						
 						
 						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					
 					
 					
@@ -9067,14 +10284,11 @@ ORDER BY TARGET_NAME, TARGET_TYPE, KEY_VALUE, METRIC_COLUMN;]]></sql>
 					
 					
 					
-					null																																																																																																																																		</data>
+					null																																																																																																																																																																																																																																																																												</data>
 					</header>
 					<footer enable="false" generatedate="false">
 						<data value="null" />
 					</footer>
-					<security enable="false" useopenpassword="false" openpassword="null" encryption="EXCLUDE_METADATA">
-						<permission enable="false" permissionpassword="null" allowcopying="true" allowprinting="true" allowupdating="false" allowaccessdevices="false" />
-					</security>
 					<pagesetup papersize="LETTER" orientation="1" measurement="in" margintop="1.0" marginbottom="1.0" marginleft="1.0" marginright="1.0" />
 				</pdf>
 		</display>
